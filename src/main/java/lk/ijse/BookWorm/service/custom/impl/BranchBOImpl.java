@@ -36,7 +36,22 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean updatedBranches(BranchDTO branchDTO) {
-        return false;
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try{
+            branchDAO.setSession(session);
+            branchDAO.update(branchDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     @Override
