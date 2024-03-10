@@ -144,9 +144,7 @@ public class AdminUserFormController {
 
     private void loadAllUsers() {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();
-        System.out.println("list");
-        System.out.println("list");
-        System.out.println("List");
+
 
         try {
             List<UserDTO> list = userBO.getAllUsers();
