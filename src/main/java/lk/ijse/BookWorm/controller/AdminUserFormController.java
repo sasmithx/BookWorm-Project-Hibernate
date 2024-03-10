@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.UserDTO;
@@ -94,6 +91,7 @@ public class AdminUserFormController {
         boolean saved = userBO.saveUsers(userDTO);
         if(saved){
             System.out.println("Saved Successfully");
+//            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully");
         }
     }
 
@@ -144,9 +142,8 @@ public class AdminUserFormController {
 
     private void loadAllUsers() {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();
-
-
-        try {
+            tblUser.getItems().clear();
+            try {
             List<UserDTO> list = userBO.getAllUsers();
             for(UserDTO dto:list){
                 UserTM userTM = new UserTM(

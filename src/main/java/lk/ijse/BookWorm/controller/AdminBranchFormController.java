@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -41,7 +42,14 @@ public class AdminBranchFormController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        String id = txtID.getText();
+        BranchDTO branchDTO = new BranchDTO();
+        branchDTO.setId(id);
+        boolean deleted = branchBO.deleteBranches(branchDTO);
+        if(deleted){
+//            System.out.println("delete Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Deleted Successfully");
+        }
     }
 
     @FXML
@@ -61,6 +69,20 @@ public class AdminBranchFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String id = txtID.getText();
+        String name = txtName.getText();
+        String location = txtLocation.getText();
+        String mobile = txtMobile.getText();
+        String email = txtEmail.getText();
+
+        BranchDTO branchDTO = new BranchDTO(id,name,location,mobile,email);
+        boolean updated = branchBO.updatedBranches(branchDTO);
+        if(updated){
+            System.out.println("Update Successfully");
+        }
+    }
+
+    public void initialize(){
 
     }
 
