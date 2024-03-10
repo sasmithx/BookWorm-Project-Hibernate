@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public ArrayList<String> loadIds() throws SQLException {
-        String sql = "SELECT U.userId FROM User AS U";
+        String sql = "SELECT U.id FROM User AS U";
         Query query = session.createQuery(sql);
         List list = query.list();
         session.close();
@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserById(String id) {
-        String sql = "SELECT U FROM User AS U WHERE U.userId = :user_id";
+        String sql = "SELECT U FROM User AS U WHERE U.id = :user_id";
         Query namedquery = session.createQuery(sql);
         namedquery.setParameter("user_id",id);
         User user = (User)namedquery.getSingleResult();
@@ -66,7 +66,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public String generateNextId() {
-        String sql = "SELECT U.userId FROM User AS U ORDER BY  U.userId desc ";
+        String sql = "SELECT U.id FROM User AS U ORDER BY  U.id desc ";
         Query namedquery = session.createQuery(sql);
         String userId = (String) namedquery.setMaxResults(1).uniqueResult();
         return userId;

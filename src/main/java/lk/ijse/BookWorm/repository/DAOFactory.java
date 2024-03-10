@@ -2,7 +2,6 @@ package lk.ijse.BookWorm.repository;
 
 import lk.ijse.BookWorm.repository.custom.impl.AdminDAOImpl;
 import lk.ijse.BookWorm.repository.custom.impl.UserDAOImpl;
-import lk.ijse.BookWorm.service.custom.impl.AdminDashboardBOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;

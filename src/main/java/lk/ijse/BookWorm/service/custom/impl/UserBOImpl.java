@@ -42,7 +42,7 @@ public class UserBOImpl implements UserBO {
 
         try{
             userDAO.setSession(session);
-            userDAO.save(userDTO.toEntity());
+            userDAO.update(userDTO.toEntity());
             transaction.commit();
             session.close();
             return true;
