@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.service.custom.impl;
 
 import lk.ijse.BookWorm.config.SessionFactoryConfig;
 import lk.ijse.BookWorm.dto.BranchDTO;
+import lk.ijse.BookWorm.entity.Branch;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BranchDAO;
 import lk.ijse.BookWorm.service.custom.BranchBO;
@@ -75,6 +76,26 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public ArrayList<BranchDTO> getAllBranches() throws SQLException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        branchDAO.setSession(session);
+        ArrayList<Branch> branches = null;
 
+        try {
+            branches = branchDAO.getAll();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<BranchDTO> branchDTOS = new ArrayList<>();
+        for(Branch branch : branches){
+            branchDTOS.add(new BranchDTO(
+               branch.getId(),
+               branch.getName(),
+               branch.getLocation(),
+               branch.getMobile(),
+               branch.getEmail()
+            ));
+        }
+        session.close();
+        return branchDTOS;
     }
 }
