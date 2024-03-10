@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserSignUpFormController">
+   <children>
+      <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="36.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Login_Right.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="70.0" text="ADMIN SIGN UP " textFill="#e77f67">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserId" alignment="CENTER" layoutX="149.0" layoutY="339.0" prefHeight="50.0" prefWidth="302.0" promptText="User Id" style="-fx-background-radius: 20;" />
+      <Label layoutX="159.0" layoutY="294.0" prefHeight="21.0" prefWidth="283.0" text="Pleae Enter Your Credentials To Sign Up" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" alignment="CENTER" layoutX="149.0" layoutY="412.0" prefHeight="50.0" prefWidth="302.0" promptText="User Name" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtPwd" alignment="CENTER" layoutX="150.0" layoutY="492.0" prefHeight="50.0" prefWidth="302.0" promptText="Password" style="-fx-background-radius: 20;" />
+      <JFXButton fx:id="btnSignUp" layoutX="150.0" layoutY="633.0" onAction="#btnSignUpOnAction" prefHeight="50.0" prefWidth="302.0" style="-fx-background-color: #F6635C; -fx-background-radius: 20;" text="SIGN UP" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="104.0" fitWidth="112.0" layoutX="249.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/user.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnLeftBack" buttonType="RAISED" contentDisplay="TOP" layoutX="36.0" layoutY="70.0" onAction="#btnBackOnAction" prefHeight="96.0" prefWidth="98.0">
+         <graphic>
+            <ImageView fitHeight="81.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/arrow-circle-left.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

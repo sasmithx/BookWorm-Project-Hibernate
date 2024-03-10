@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pagingPane" prefHeight="800.0" prefWidth="953.0" style="-fx-background-color: #161B22; -fx-border-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserDashboardFormController">
+   <children>
+      <ImageView fitHeight="74.0" fitWidth="90.0" layoutX="865.0" layoutY="20.0" onMouseClicked="#chngePwdOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/settings.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTime" layoutX="672.0" layoutY="150.0" prefHeight="142.0" prefWidth="212.0" text="09:45" textFill="WHITE">
+         <font>
+            <Font size="65.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime1" layoutX="874.0" layoutY="218.0" prefHeight="31.0" prefWidth="77.0" text="AM" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="643.0" layoutY="271.0" prefHeight="21.0" prefWidth="227.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Pane layoutX="22.0" layoutY="155.0" prefHeight="126.0" prefWidth="251.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="138.0" layoutY="86.0" text="Book Count">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBookCount" layoutX="145.0" layoutY="41.0" prefHeight="30.0" prefWidth="102.0" text="Count">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Layered-Fruity-Fizz/src/main/resources/assests/icon/Ordericon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="312.0" layoutY="155.0" prefHeight="126.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="128.0" layoutY="88.0" text="Total Users">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUsers" layoutX="128.0" layoutY="46.0" prefHeight="30.0" prefWidth="110.0" text="Users">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="6.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Layered-Fruity-Fizz/src/main/resources/assests/icon/Customericon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>

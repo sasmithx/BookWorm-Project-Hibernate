@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url("assests/font/Montserrat-VariableFont_wght.ttf");
+}
+
+.font{
+    -fx-font-family: Montserrat;
+}

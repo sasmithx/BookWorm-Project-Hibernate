@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pagingPane" prefHeight="800.0" prefWidth="953.0" style="-fx-background-color: #161B22; -fx-border-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserBookFormController">
+   <children>
+      <Label layoutX="386.0" layoutY="26.0" text="User Book" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField layoutX="37.0" layoutY="138.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="37.0" layoutY="93.0" prefHeight="32.0" prefWidth="115.0" text="*Order ID" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="490.0" layoutY="148.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="490.0" layoutY="103.0" prefHeight="32.0" prefWidth="133.0" text="*Order Date" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="201.0" prefHeight="32.0" prefWidth="115.0" text="*User ID" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXComboBox layoutX="37.0" layoutY="233.0" prefHeight="36.0" prefWidth="270.0" />
+      <TextField layoutX="490.0" layoutY="243.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="490.0" layoutY="198.0" prefHeight="32.0" prefWidth="133.0" text="*User Name" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="303.0" prefHeight="32.0" prefWidth="115.0" text="*Book ID" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXComboBox layoutX="37.0" layoutY="335.0" prefHeight="32.0" prefWidth="211.0" />
+      <TextField layoutX="281.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="281.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Title" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="510.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="510.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty.On Hand" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty.On Hand" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="728.0" layoutY="400.0" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Add to cart" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Layered-Fruity-Fizz/src/main/resources/assests/icon/cart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView layoutX="48.0" layoutY="472.0" prefHeight="198.0" prefWidth="821.0">
+        <columns>
+          <TableColumn prefWidth="168.0" text="Book ID" />
+          <TableColumn prefWidth="282.0" text="Title" />
+            <TableColumn prefWidth="168.0" text="Qty" />
+            <TableColumn prefWidth="202.0" text="Amount" />
+        </columns>
+      </TableView>
+      <Label layoutX="40.0" layoutY="733.0" text="Total Of Books:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTotal" disable="true" layoutX="167.0" layoutY="731.0" />
+      <JFXButton layoutX="735.0" layoutY="717.0" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Borrow" textFill="WHITE" />
+   </children>
+</Pane>

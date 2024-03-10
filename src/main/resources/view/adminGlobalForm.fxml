@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.AdminGlobalFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#161b22" height="800.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
+      <Pane layoutX="13.0" layoutY="117.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton onAction="#btnDashbordOnAction" prefHeight="64.0" prefWidth="222.0" style="-fx-background-color: #161B22;" text="Dashboard" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/dashIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="202.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton onAction="#btnCatalogOnAction" prefHeight="64.0" prefWidth="222.0" style="-fx-background-color: #161B22;" text="Catalog" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/catalog-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="289.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton onAction="#btnBooksOnAction" prefHeight="64.0" prefWidth="222.0" style="-fx-background-color: #161B22;" text="Books" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/book-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="368.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton onAction="#btnUserOnAction" prefHeight="64.0" prefWidth="222.0" style="-fx-background-color: #161B22;" text="Users" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/user-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="457.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton onAction="#btnBranchOnAction" prefHeight="64.0" prefWidth="222.0" style="-fx-background-color: #161B22;" text="Branches" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/branch-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="696.0" prefHeight="64.0" prefWidth="222.0" style="-fx-background-radius: 20;">
+         <children>
+            <JFXButton fx:id="btnLogout" onAction="#btnLogoutOnAction" prefHeight="64.0" prefWidth="222.0" text="Log Out" textFill="#f6635c">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/logout-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pagingPane" layoutX="247.0" prefHeight="801.0" prefWidth="953.0" />
+      <Label layoutX="18.0" layoutY="29.0" prefHeight="42.0" prefWidth="211.0" text="BOOKWORM LIBRARY" textFill="#f6635c">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

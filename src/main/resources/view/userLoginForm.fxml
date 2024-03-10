@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserLoginFormController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="566.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/img/Login_Back.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="614.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Login_Right.png" />
+         </image></ImageView>
+      <Label layoutX="799.0" layoutY="96.0" text="BookWorm" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="803.0" layoutY="299.0" text="WELCOME" textFill="#e77f67">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="746.0" layoutY="360.0" prefHeight="21.0" prefWidth="270.0" text="Pleae Enter Your Credentials To Login" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" alignment="CENTER" layoutX="730.0" layoutY="411.0" prefHeight="50.0" prefWidth="302.0" promptText="Username" style="-fx-background-radius: 20;" />
+      <PasswordField fx:id="txtPassword" alignment="CENTER" layoutX="730.0" layoutY="496.0" prefHeight="50.0" prefWidth="302.0" promptText="Password" style="-fx-background-radius: 20;" />
+      <Hyperlink fx:id="hyperfp" layoutX="730.0" layoutY="563.0" onAction="#hlinkForgotPassword" text="Forgot Password ?" textFill="#f5f5f5" />
+      <JFXButton layoutX="730.0" layoutY="642.0" onAction="#btnLoginOnAction" prefHeight="50.0" prefWidth="302.0" style="-fx-background-color: #F6635C; -fx-background-radius: 20;" text="LOGIN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="309.0" fitWidth="302.0" layoutX="727.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Logo.png" />
+         </image>
+      </ImageView>
+      <Hyperlink fx:id="hyperfp2" layoutX="972.0" layoutY="563.0" onAction="#hlinkSignUp" text="SignUp" textFill="#f5f5f5" />
+      <JFXButton fx:id="btnLeftBack" buttonType="RAISED" contentDisplay="TOP" layoutX="614.0" layoutY="70.0" onAction="#btnBackOnAction" prefHeight="96.0" prefWidth="98.0">
+         <graphic>
+            <ImageView fitHeight="81.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/arrow-circle-left.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ComboBox fx:id="cmbUserId" layoutX="806.0" layoutY="594.0" prefWidth="150.0" promptText="userID" />
+   </children>
+</AnchorPane>

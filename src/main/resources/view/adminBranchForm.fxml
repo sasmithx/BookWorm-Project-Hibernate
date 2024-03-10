@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pagingPane" prefHeight="801.0" prefWidth="953.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.AdminBranchFormController">
+   <children>
+      <Label layoutX="374.0" layoutY="23.0" text="Branch Details" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="93.0" text="*Branch ID" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtID" alignment="CENTER" layoutX="28.0" layoutY="131.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch ID" style="-fx-background-radius: 20;" />
+      <Label layoutX="522.0" layoutY="94.0" text="*Branch Name" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" alignment="CENTER" layoutX="522.0" layoutY="132.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch Name" style="-fx-background-radius: 20;" />
+      <Label layoutX="28.0" layoutY="201.0" text="*Branch Location" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLocation" alignment="CENTER" layoutX="28.0" layoutY="239.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch Location" style="-fx-background-radius: 20;" />
+      <Label layoutX="522.0" layoutY="202.0" text="*Branch Mobile" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMobile" alignment="CENTER" layoutX="522.0" layoutY="240.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch Mobile" style="-fx-background-radius: 20;" />
+      <Label layoutX="28.0" layoutY="299.0" text="*Branch Email" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" alignment="CENTER" layoutX="28.0" layoutY="337.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch Email" style="-fx-background-radius: 20;" />
+      <TableView fx:id="tblBranch" layoutX="28.0" layoutY="477.0" prefHeight="303.0" prefWidth="889.0">
+        <columns>
+          <TableColumn prefWidth="97.0" text="Branch ID" />
+          <TableColumn prefWidth="225.0" text="Branch Name" />
+            <TableColumn prefWidth="199.0" text="Branch Location" />
+            <TableColumn prefWidth="217.0" text="Branch Mobile" />
+            <TableColumn prefWidth="150.0" text="Branch Email" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="528.0" layoutY="342.0" onAction="#btnClearOnAction" style="-fx-background-color: yellow;" text="Clear" />
+      <JFXButton layoutX="590.0" layoutY="342.0" onAction="#btnUpdateOnAction" style="-fx-background-color: lightgreen;" text="Update" />
+      <JFXButton layoutX="660.0" layoutY="342.0" onAction="#btnSaveOnAction" style="-fx-background-color: lightblue;" text="Save" />
+      <JFXButton layoutX="718.0" layoutY="342.0" onAction="#btnDeleteOnAction" style="-fx-background-color: #e74c3c;" text="Delete" />
+   </children>
+</Pane>

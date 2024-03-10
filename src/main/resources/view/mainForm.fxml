@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.MainFormController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="573.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/img/welcome.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="638.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Login_Right.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="811.0" layoutY="480.0" text="WELCOME !!!" textFill="#e77f67">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="781.0" layoutY="541.0" prefHeight="21.0" prefWidth="244.0" text="Pleae Select Your Status To Enter" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnUser" layoutX="740.0" layoutY="652.0" onAction="#btnUserOnAction" prefHeight="50.0" prefWidth="302.0" style="-fx-background-color: #F6635C; -fx-background-radius: 20;" text="USER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnAdmin" layoutX="740.0" layoutY="577.0" onAction="#btnAdminOnAction" prefHeight="50.0" prefWidth="302.0" style="-fx-background-color: #F6635C; -fx-background-radius: 20;" text="ADMIN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="415.0" fitWidth="415.0" layoutX="695.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Logo.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnPower" buttonType="RAISED" contentDisplay="TOP" layoutX="1099.0" layoutY="70.0" onAction="#btnPowerOnAction" prefHeight="42.0" prefWidth="68.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/PowerButton.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

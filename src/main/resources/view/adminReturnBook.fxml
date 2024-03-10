@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pagingPane" prefHeight="801.0" prefWidth="953.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.AdminReturnBookController">
+   <children>
+      <Label layoutX="328.0" layoutY="25.0" prefHeight="42.0" prefWidth="297.0" text="Book Late Returners" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnBorrowed" layoutX="45.0" layoutY="113.0" onAction="#btnBorrowOnAction" prefHeight="43.0" prefWidth="189.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Book Borrowers" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnReturned" layoutX="290.0" layoutY="113.0" prefHeight="43.0" prefWidth="222.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Book Late Returners" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="43.0" layoutY="368.0" prefHeight="256.0" prefWidth="870.0">
+         <columns>
+            <TableColumn prefWidth="101.0" text="Borrower ID" />
+            <TableColumn prefWidth="152.0" text="Borrower Name" />
+            <TableColumn prefWidth="130.0" text="Book ID" />
+            <TableColumn prefWidth="153.0" text="Title" />
+            <TableColumn minWidth="0.0" prefWidth="129.0" text="Due Date" />
+            <TableColumn prefWidth="204.0" text="Late Days" />
+         </columns>
+      </TableView>
+   </children>
+</Pane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.AdminChangePasswordFormController">
+   <children>
+      <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="36.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Login_Right.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtUserName" alignment="CENTER" layoutX="149.0" layoutY="357.0" prefHeight="50.0" prefWidth="302.0" promptText="Change Your User Name" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtPassword" alignment="CENTER" layoutX="149.0" layoutY="443.0" prefHeight="50.0" prefWidth="302.0" promptText="Change Your Password" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtConfirmPwd" alignment="CENTER" layoutX="149.0" layoutY="524.0" prefHeight="50.0" prefWidth="302.0" promptText="Confirm Password" style="-fx-background-radius: 20;" />
+      <JFXButton layoutX="149.0" layoutY="650.0" onAction="#ChangeOnAction" prefHeight="50.0" prefWidth="302.0" style="-fx-background-color: #F6635C; -fx-background-radius: 20;" text="CHANGE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="75.0" layoutY="82.0" text="ADMIN CHANGE CREDENTIALS" textFill="#e77f67">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUsrId" layoutX="149.0" layoutY="278.0" prefHeight="50.0" prefWidth="302.0" style="-fx-background-radius: 20;" text="Label" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/security-user.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
