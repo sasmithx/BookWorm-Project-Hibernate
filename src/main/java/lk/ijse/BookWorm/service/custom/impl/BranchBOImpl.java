@@ -56,11 +56,25 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean deleteBranches(BranchDTO branchDTO) {
-        return false;
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try{
+            branchDAO.setSession(session);
+            branchDAO.delete(branchDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public ArrayList<BranchDTO> getAllBranches() throws SQLException {
-        return null;
+
     }
 }
