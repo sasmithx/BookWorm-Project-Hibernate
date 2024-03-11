@@ -85,6 +85,7 @@ public class AdminBranchFormController implements Initializable {
         if(deleted){
 //            System.out.println("delete Successfully");
             new Alert(Alert.AlertType.CONFIRMATION,"Deleted Successfully");
+            loadAllBranches();
         }
     }
 
@@ -99,7 +100,8 @@ public class AdminBranchFormController implements Initializable {
         BranchDTO branchDTO = new BranchDTO(id,name,location,mobile,email);
         boolean saved = branchBO.saveBranches(branchDTO);
         if(saved){
-            System.out.println("Saved Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+            loadAllBranches();
         }
     }
 
@@ -114,7 +116,8 @@ public class AdminBranchFormController implements Initializable {
         BranchDTO branchDTO = new BranchDTO(id,name,location,mobile,email);
         boolean updated = branchBO.updatedBranches(branchDTO);
         if(updated){
-            System.out.println("Update Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Update Successfully").show();
+            loadAllBranches();
         }
     }
 

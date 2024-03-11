@@ -31,20 +31,13 @@ public class SessionFactoryConfig {
            e.printStackTrace();
        }
 
-   /*    sessionFactory = new Configuration()
-               .setProperties(properties).
-               addAnnotatedClass(Student.class).
-               addAnnotatedClass(Room.class).
-               addAnnotatedClass(Reservation.class).
-               addAnnotatedClass(User.class).
-               buildSessionFactory();*/
+
        sessionFactory = new Configuration()
                .setProperties(properties)
                .addAnnotatedClass(User.class)
                .addAnnotatedClass(Branch.class)
                .addAnnotatedClass(Book.class)
                .buildSessionFactory();
-
 
    }
 

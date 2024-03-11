@@ -78,6 +78,7 @@ public class AdminUserFormController implements Initializable {
         txtMobile.clear();
         txtEmail.clear();
         txtAddress.clear();
+        txtDob.setValue(null);
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
@@ -102,8 +103,7 @@ public class AdminUserFormController implements Initializable {
         UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
         boolean saved = userBO.saveUsers(userDTO);
         if(saved){
-            System.out.println("Saved Successfully");
-//            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
         }
     }
 
