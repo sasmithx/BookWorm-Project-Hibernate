@@ -66,6 +66,7 @@ public class AdminBranchFormController implements Initializable {
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();
+        new Alert(Alert.AlertType.CONFIRMATION,"Clear Successfully").show();
     }
 
     private void clearFields(){
@@ -84,7 +85,7 @@ public class AdminBranchFormController implements Initializable {
         boolean deleted = branchBO.deleteBranches(branchDTO);
         if(deleted){
 //            System.out.println("delete Successfully");
-            new Alert(Alert.AlertType.CONFIRMATION,"Deleted Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Deleted Successfully").show();
             loadAllBranches();
         }
     }

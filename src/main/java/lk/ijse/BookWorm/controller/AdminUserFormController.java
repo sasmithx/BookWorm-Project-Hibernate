@@ -70,6 +70,7 @@ public class AdminUserFormController implements Initializable {
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();
+        new Alert(Alert.AlertType.CONFIRMATION,"Clear Successfully").show();
     }
 
     private void clearFields(){
@@ -81,18 +82,20 @@ public class AdminUserFormController implements Initializable {
         txtDob.setValue(null);
     }
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException {
         String id = txtID.getText();
         UserDTO userDTO = new UserDTO();
         userDTO.setId(id);
         boolean deleted = userBO.deleteUsers(userDTO);
         if(deleted){
             System.out.println("Delete Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Delete Successfully").show();
+            loadAllUsers();
         }
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void btnSaveOnAction(ActionEvent event) throws SQLException {
         String id = txtID.getText();
         String name = txtUserName.getText();
         String mobile = txtMobile.getText();
@@ -104,11 +107,12 @@ public class AdminUserFormController implements Initializable {
         boolean saved = userBO.saveUsers(userDTO);
         if(saved){
             new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+            loadAllUsers();
         }
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
         String id = txtID.getText();
         String name = txtUserName.getText();
         String mobile = txtMobile.getText();
@@ -120,6 +124,8 @@ public class AdminUserFormController implements Initializable {
         boolean updated = userBO.updateUsers(userDTO);
         if (updated){
             System.out.println("Update Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Update Successfully").show();
+            loadAllUsers();
         }
     }
 
