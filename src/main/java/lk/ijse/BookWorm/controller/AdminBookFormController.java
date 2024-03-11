@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -62,7 +63,16 @@ public class AdminBookFormController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        clearFields();
+        new Alert(Alert.AlertType.CONFIRMATION,"Clear Successfully").show();
+    }
 
+    public void clearFields(){
+        txtID.clear();
+        txtBookName.clear();
+        txtAuthorName.clear();
+        txtGenre.clear();
+        txtQty.clear();
     }
 
     @FXML
@@ -73,6 +83,8 @@ public class AdminBookFormController implements Initializable {
         boolean deleted = bookBO.deleteBooks(bookDTO);
         if(deleted){
             System.out.println("Delete Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Delete Successfully").show();
+            loadAllBooks();
         }
 
     }
@@ -89,6 +101,8 @@ public class AdminBookFormController implements Initializable {
         boolean saved = bookBO.saveBooks(bookDTO);
         if(saved){
             System.out.println("Saved Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+            loadAllBooks();
         }
     }
 
@@ -104,6 +118,8 @@ public class AdminBookFormController implements Initializable {
         boolean updated = bookBO.updateBooks(bookDTO);
         if(updated){
             System.out.println("Update Successfully");
+            new Alert(Alert.AlertType.CONFIRMATION,"Update Successfully").show();
+            loadAllBooks();
         }
     }
 
