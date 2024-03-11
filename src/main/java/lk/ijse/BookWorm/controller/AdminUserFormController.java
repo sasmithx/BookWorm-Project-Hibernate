@@ -12,6 +12,7 @@ import lk.ijse.BookWorm.dto.UserDTO;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.UserBO;
 import lk.ijse.BookWorm.tm.UserTM;
+import lk.ijse.BookWorm.util.DataValidateController;
 import lombok.SneakyThrows;
 
 import java.net.URL;
@@ -68,6 +69,19 @@ public class AdminUserFormController implements Initializable {
     @FXML
     private Label userIdValiidate;
 
+    @FXML
+    private Label userAddressValiidate;
+
+    @FXML
+    private Label userEmailValiidate;
+
+    @FXML
+    private Label userMobileValiidate;
+
+    @FXML
+    private Label userNameValiidate;
+
+
     UserBO userBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.UserBO);
 
     @FXML
@@ -110,11 +124,62 @@ public class AdminUserFormController implements Initializable {
                 LocalDate dob = txtDob.getValue();
 
                 UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
-                boolean saved = userBO.saveUsers(userDTO);
+                /*boolean saved = userBO.saveUsers(userDTO);
                 if(saved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
-                loadAllUsers();
+                loadAllUsers();*/
+
+
+            //////////////////////////////////////////////////////////////////////////////////////
+
+            if(DataValidateController.userIdValidate(txtID.getText())){
+                userIdValiidate.setText("");
+
+                if (DataValidateController.userNameValidate(txtUserName.getText())) {
+                    userNameValiidate.setText("");
+
+                    if (DataValidateController.userMobileValidate(txtMobile.getText())){
+                        userMobileValiidate.setText("");
+
+                        if(DataValidateController.emailCheck(txtEmail.getText())){
+                            userEmailValiidate.setText("");
+
+                            if(DataValidateController.addressValidate(txtAddress.getText())){
+                                userAddressValiidate.setText("");
+                                try {
+                                    boolean saved = userBO.saveUsers(userDTO);
+                                    if(saved){
+                                        new Alert(Alert.AlertType.CONFIRMATION,"User Saved Successfully").show();
+                                        loadAllUsers();
+                                    }
+                                } catch (SQLException e) {
+                                    new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+                                } /*catch (ClassNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }*/
+                            }else {
+                                userAddressValiidate.setText("Invalid Address !");
+                            }
+
+
+                        }else {
+                            userEmailValiidate.setText("Invalid Email !");
+                        }
+
+                    }else {
+                        userMobileValiidate.setText("Invalid tel.Include 10 charcters !");
+                    }
+
+                }else{
+                    userNameValiidate.setText("Include atleast 4 characters !");
+                }
+
+            }else {
+                userIdValiidate.setText("Invalid customer Id !");
             }
+
+
+
         }
     }
 
