@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.service.custom.impl;
 
 import lk.ijse.BookWorm.config.SessionFactoryConfig;
 import lk.ijse.BookWorm.dto.BookDTO;
+import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
 import lk.ijse.BookWorm.service.custom.BookBO;
@@ -74,6 +75,27 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public ArrayList<BookDTO> getAllBooks() throws SQLException {
-        return null;
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        bookDAO.setSession(session);
+        ArrayList<Book> books = null;
+
+        try {
+            books = bookDAO.getAll();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<BookDTO> bookDTOS = new ArrayList<>();
+        for(Book book : books){
+            bookDTOS.add(new BookDTO(
+                    book.getId(),
+                    book.getBookName(),
+                    book.getAuthorName(),
+                    book.getGenre(),
+                    book.getQty()
+            ));
+        }
+        session.close();
+        return bookDTOS;
     }
 }
