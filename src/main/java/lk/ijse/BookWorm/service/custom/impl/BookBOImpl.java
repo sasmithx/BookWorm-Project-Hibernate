@@ -36,7 +36,21 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public boolean updateBooks(BookDTO bookDTO) {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        Transaction transaction = session.beginTransaction();
 
+        try {
+            bookDAO.setSession(session);
+            bookDAO.update(bookDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
