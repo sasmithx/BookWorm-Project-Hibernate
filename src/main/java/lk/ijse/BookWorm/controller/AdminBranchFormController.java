@@ -65,7 +65,15 @@ public class AdminBranchFormController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields(){
+        txtID.clear();
+        txtName.clear();
+        txtLocation.clear();
+        txtMobile.clear();
+        txtEmail.clear();
     }
 
     @FXML
@@ -126,7 +134,7 @@ public class AdminBranchFormController implements Initializable {
 
     private void loadAllBranches() {
         ObservableList<BranchTM> obList = FXCollections.observableArrayList();
-        tblBranch.getItems().clear();
+//        tblBranch.getItems().clear();
         try {
             List<BranchDTO> list = branchBO.getAllBranches();
             for(BranchDTO dto:list){

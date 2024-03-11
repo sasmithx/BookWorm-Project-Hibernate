@@ -69,9 +69,16 @@ public class AdminUserFormController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clearFields();
     }
 
+    private void clearFields(){
+        txtID.clear();
+        txtUserName.clear();
+        txtMobile.clear();
+        txtEmail.clear();
+        txtAddress.clear();
+    }
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         String id = txtID.getText();
