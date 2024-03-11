@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -11,13 +12,16 @@ import lk.ijse.BookWorm.dto.UserDTO;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.UserBO;
 import lk.ijse.BookWorm.tm.UserTM;
+import lombok.SneakyThrows;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class AdminUserFormController {
+public class AdminUserFormController implements Initializable {
 
     @FXML
     private Pane pagingPane;
@@ -75,7 +79,7 @@ public class AdminUserFormController {
         userDTO.setId(id);
         boolean deleted = userBO.deleteUsers(userDTO);
         if(deleted){
-            System.out.println("delete Successfully");
+            System.out.println("Delete Successfully");
         }
     }
 
@@ -112,7 +116,9 @@ public class AdminUserFormController {
         }
     }
 
-    public void initialize() throws SQLException {
+    @SneakyThrows
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
         loadAllUsers();
     }
@@ -140,6 +146,8 @@ public class AdminUserFormController {
             ));
         }
     }
+
+
 
     /*private void loadAllUsers() {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();

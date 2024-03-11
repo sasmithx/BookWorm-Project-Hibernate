@@ -51,11 +51,11 @@
       <JFXButton layoutX="720.0" layoutY="370.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #e74c3c;" text="Delete" />
       <TableView fx:id="tblBook" layoutX="35.0" layoutY="441.0" prefHeight="349.0" prefWidth="895.0">
         <columns>
-          <TableColumn prefWidth="144.0" text="Book ID" />
-          <TableColumn prefWidth="174.0" text="Book Name" />
-            <TableColumn prefWidth="175.0" text="Author Name" />
-            <TableColumn prefWidth="226.0" text="Genre" />
-            <TableColumn prefWidth="175.0" text="Qty" />
+          <TableColumn fx:id="colBookId" prefWidth="144.0" text="Book ID" />
+          <TableColumn fx:id="colBookName" prefWidth="174.0" text="Book Name" />
+            <TableColumn fx:id="colAuthorName" prefWidth="175.0" text="Author Name" />
+            <TableColumn fx:id="colGenre" prefWidth="226.0" text="Genre" />
+            <TableColumn fx:id="colQty" prefWidth="175.0" text="Qty" />
         </columns>
       </TableView>
    </children>

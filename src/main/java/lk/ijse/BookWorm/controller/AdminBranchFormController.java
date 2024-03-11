@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,10 +16,12 @@ import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.BranchBO;
 import lk.ijse.BookWorm.tm.BranchTM;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class AdminBranchFormController {
+public class AdminBranchFormController implements Initializable {
 
     @FXML
     private Pane pagingPane;
@@ -107,7 +110,8 @@ public class AdminBranchFormController {
         }
     }
 
-    public void initialize() throws SQLException {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
         loadAllBranches();
     }
@@ -140,5 +144,6 @@ public class AdminBranchFormController {
             throw new RuntimeException(e);
         }
     }
+
 
 }
