@@ -66,5 +66,6 @@
             <TableColumn fx:id="colDob" prefWidth="183.0" text="Date OF Birth" />
         </columns>
       </TableView>
+      <Label fx:id="userIdValiidate" layoutX="40.0" layoutY="195.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" />
    </children>
 </Pane>

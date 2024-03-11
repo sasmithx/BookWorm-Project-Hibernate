@@ -65,6 +65,9 @@ public class AdminUserFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> colUserName;
 
+    @FXML
+    private Label userIdValiidate;
+
     UserBO userBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.UserBO);
 
     @FXML
@@ -96,18 +99,24 @@ public class AdminUserFormController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException {
-        String id = txtID.getText();
-        String name = txtUserName.getText();
-        String mobile = txtMobile.getText();
-        String email = txtEmail.getText();
-        String address = txtAddress.getText();
-        LocalDate dob = txtDob.getValue();
+        if(txtID.getText().isEmpty() || txtUserName.getText().isEmpty() || txtMobile.getText().isEmpty() || txtEmail.getText().isEmpty() || txtEmail.getText().isEmpty() || txtDob.getValue() == null){
+            new Alert(Alert.AlertType.ERROR,"Please Fill All Empty Fileds Before Add New User !").show();
+        }  else {
+                String id = txtID.getText();
+                String name = txtUserName.getText();
+                String mobile = txtMobile.getText();
+                String email = txtEmail.getText();
+                String address = txtAddress.getText();
+                LocalDate dob = txtDob.getValue();
 
-        UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
-        boolean saved = userBO.saveUsers(userDTO);
-        if(saved){
-            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
-            loadAllUsers();
+                UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
+                boolean saved = userBO.saveUsers(userDTO);
+                if(saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+                loadAllUsers();
+            }
+
+
         }
     }
 
