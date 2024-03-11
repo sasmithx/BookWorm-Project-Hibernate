@@ -14,6 +14,7 @@ import lk.ijse.BookWorm.tm.UserTM;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUserFormController {
@@ -111,7 +112,7 @@ public class AdminUserFormController {
         }
     }
 
-    public void initialize(){
+    public void initialize() throws SQLException {
         setCellValueFactory();
         loadAllUsers();
     }
@@ -125,7 +126,7 @@ public class AdminUserFormController {
         colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
     }
 
-    /*private void loadAllUsers() throws SQLException {
+    private void loadAllUsers() throws SQLException {
         tblUser.getItems().clear();
         ArrayList<UserDTO> allUsers = userBO.getAllUsers();
         for(UserDTO allUser : allUsers){
@@ -138,9 +139,9 @@ public class AdminUserFormController {
                     allUser.getDob()
             ));
         }
-    }*/
+    }
 
-    private void loadAllUsers() {
+    /*private void loadAllUsers() {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();
             tblUser.getItems().clear();
             try {
@@ -160,7 +161,7 @@ public class AdminUserFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
 }

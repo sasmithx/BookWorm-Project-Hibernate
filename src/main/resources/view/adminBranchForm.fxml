@@ -47,11 +47,11 @@
       <TextField fx:id="txtEmail" alignment="CENTER" layoutX="28.0" layoutY="337.0" prefHeight="36.0" prefWidth="276.0" promptText="Branch Email" style="-fx-background-radius: 20;" />
       <TableView fx:id="tblBranch" layoutX="28.0" layoutY="477.0" prefHeight="303.0" prefWidth="889.0">
         <columns>
-          <TableColumn prefWidth="97.0" text="Branch ID" />
-          <TableColumn prefWidth="225.0" text="Branch Name" />
-            <TableColumn prefWidth="199.0" text="Branch Location" />
-            <TableColumn prefWidth="217.0" text="Branch Mobile" />
-            <TableColumn prefWidth="150.0" text="Branch Email" />
+          <TableColumn fx:id="colId" prefWidth="97.0" text="Branch ID" />
+          <TableColumn fx:id="colName" prefWidth="225.0" text="Branch Name" />
+            <TableColumn fx:id="colLocation" prefWidth="199.0" text="Branch Location" />
+            <TableColumn fx:id="colMobile" prefWidth="217.0" text="Branch Mobile" />
+            <TableColumn fx:id="colEmail" prefWidth="150.0" text="Branch Email" />
         </columns>
       </TableView>
       <JFXButton layoutX="528.0" layoutY="342.0" onAction="#btnClearOnAction" style="-fx-background-color: yellow;" text="Clear" />

@@ -1,14 +1,22 @@
 package lk.ijse.BookWorm.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.BranchDTO;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.BranchBO;
+import lk.ijse.BookWorm.tm.BranchTM;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class AdminBranchFormController {
 
@@ -16,7 +24,7 @@ public class AdminBranchFormController {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblBranch;
+    private TableView<BranchTM> tblBranch;
 
     @FXML
     private TextField txtEmail;
@@ -32,6 +40,23 @@ public class AdminBranchFormController {
 
     @FXML
     private TextField txtName;
+
+
+    @FXML
+    private TableColumn<?, ?> colEmail;
+
+    @FXML
+    private TableColumn<?, ?> colId;
+
+    @FXML
+    private TableColumn<?, ?> colLocation;
+
+    @FXML
+    private TableColumn<?, ?> colMobile;
+
+    @FXML
+    private TableColumn<?, ?> colName;
+
 
     BranchBO branchBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BranchBO);
 
@@ -82,8 +107,38 @@ public class AdminBranchFormController {
         }
     }
 
-    public void initialize(){
+    public void initialize() throws SQLException {
+        setCellValueFactory();
+        loadAllBranches();
+    }
 
+    private void setCellValueFactory(){
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
+        colMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+    }
+
+    private void loadAllBranches() {
+        ObservableList<BranchTM> obList = FXCollections.observableArrayList();
+        tblBranch.getItems().clear();
+        try {
+            List<BranchDTO> list = branchBO.getAllBranches();
+            for(BranchDTO dto:list){
+                BranchTM branchTM = new BranchTM(
+                        dto.getId(),
+                        dto.getName(),
+                        dto.getLocation(),
+                        dto.getMobile(),
+                        dto.getEmail()
+                );
+                obList.add(branchTM);
+            }
+            tblBranch.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

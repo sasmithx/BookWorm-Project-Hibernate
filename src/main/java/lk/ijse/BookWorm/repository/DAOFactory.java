@@ -1,6 +1,5 @@
 package lk.ijse.BookWorm.repository;
 
-import lk.ijse.BookWorm.repository.custom.impl.AdminDAOImpl;
 import lk.ijse.BookWorm.repository.custom.impl.BranchDAOImpl;
 import lk.ijse.BookWorm.repository.custom.impl.UserDAOImpl;
 

@@ -1,5 +1,6 @@
 package lk.ijse.BookWorm.config;
 
+import lk.ijse.BookWorm.entity.Branch;
 import lk.ijse.BookWorm.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,6 +40,7 @@ public class SessionFactoryConfig {
        sessionFactory = new Configuration()
                .setProperties(properties)
                .addAnnotatedClass(User.class)
+               .addAnnotatedClass(Branch.class)
                .buildSessionFactory();
 
 
