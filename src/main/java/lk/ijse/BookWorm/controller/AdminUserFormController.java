@@ -115,8 +115,6 @@ public class AdminUserFormController implements Initializable {
                 new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
                 loadAllUsers();
             }
-
-
         }
     }
 

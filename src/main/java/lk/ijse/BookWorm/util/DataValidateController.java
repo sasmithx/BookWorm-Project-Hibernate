@@ -10,4 +10,11 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(userId);
         return matcher.matches();
     }
+
+    public static boolean userNameValidate(String userName){
+        String userRegex = "^[A-z\\s]{4,15}$";
+        Pattern pattern = Pattern.compile(userRegex);
+        Matcher matcher = pattern.matcher(userName);
+        return matcher.matches();
+    }
 }
