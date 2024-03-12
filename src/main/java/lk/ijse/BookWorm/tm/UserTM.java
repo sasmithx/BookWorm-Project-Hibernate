@@ -12,8 +12,9 @@ import java.time.LocalDate;
 public class UserTM {
     private String id;
     private String name;
+    private String password;
     private String mobile;
     private String email;
     private String address;
-    private LocalDate dob;
+    /*private LocalDate dob;*/
 }

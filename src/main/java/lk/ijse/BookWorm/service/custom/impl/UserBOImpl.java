@@ -88,10 +88,11 @@ public class UserBOImpl implements UserBO {
             userDTOS.add(new UserDTO(
                     user.getId(),
                     user.getName(),
+                    user.getPassword(),
                     user.getMobile(),
                     user.getEmail(),
-                    user.getAddress(),
-                    user.getDob()
+                    user.getAddress()
+                    /*user.getDob()*/
             ));
         }
         session.close();

@@ -20,6 +20,13 @@ public class DataValidateController {
         return matcher.matches();
     }
 
+    public static boolean userPasswordValidate(String password){
+        String userRegex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$";
+        Pattern pattern = Pattern.compile(userRegex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
     public static boolean userMobileValidate(String userMobile){
         String userRegex = "^(?:7|0|(?:\\\\\\\\+94))[0-9]{9,10}$";
         Pattern pattern = Pattern.compile(userRegex);
@@ -40,6 +47,8 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(address);
         return matcher.matches();
     }
+
+
 
     //////////////////////////////// BOOK ////////////////////////////////////////////////
 

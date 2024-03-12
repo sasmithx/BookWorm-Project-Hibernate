@@ -27,8 +27,6 @@ public class AdminUserFormController implements Initializable {
     @FXML
     private Pane pagingPane;
 
-    @FXML
-    private DatePicker txtDob;
 
     @FXML
     private TableView<UserTM> tblUser;
@@ -49,10 +47,11 @@ public class AdminUserFormController implements Initializable {
     private TextField txtUserName;
 
     @FXML
-    private TableColumn<?, ?> colAddress;
+    private TextField txtPassword;
 
     @FXML
-    private TableColumn<?, ?> colDob;
+    private TableColumn<?, ?> colAddress;
+
 
     @FXML
     private TableColumn<?, ?> colEmail;
@@ -67,19 +66,27 @@ public class AdminUserFormController implements Initializable {
     private TableColumn<?, ?> colUserName;
 
     @FXML
-    private Label userIdValiidate;
+    private TableColumn<?, ?> colPassword;
 
     @FXML
-    private Label userAddressValiidate;
+    private Label userIdValidate;
 
     @FXML
-    private Label userEmailValiidate;
+    private Label userAddressValidate;
 
     @FXML
-    private Label userMobileValiidate;
+    private Label userEmailValidate;
 
     @FXML
-    private Label userNameValiidate;
+    private Label userMobileValidate;
+
+    @FXML
+    private Label userNameValidate;
+
+    @FXML
+    private Label userPasswordValidate;
+
+
 
 
     UserBO userBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.UserBO);
@@ -93,10 +100,11 @@ public class AdminUserFormController implements Initializable {
     private void clearFields(){
         txtID.clear();
         txtUserName.clear();
+        txtPassword.clear();
         txtMobile.clear();
         txtEmail.clear();
         txtAddress.clear();
-        txtDob.setValue(null);
+//        txtDob.setValue(null);
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws SQLException {
@@ -113,17 +121,18 @@ public class AdminUserFormController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException {
-        if(txtID.getText().isEmpty() || txtUserName.getText().isEmpty() || txtMobile.getText().isEmpty() || txtEmail.getText().isEmpty() || txtEmail.getText().isEmpty() || txtDob.getValue() == null){
+        if(txtID.getText().isEmpty() || txtUserName.getText().isEmpty()  || txtPassword.getText().isEmpty()|| txtMobile.getText().isEmpty() || txtEmail.getText().isEmpty() || txtAddress.getText().isEmpty()){
             new Alert(Alert.AlertType.ERROR,"Please Fill All Empty Fileds Before Add New User !").show();
         }  else {
                 String id = txtID.getText();
                 String name = txtUserName.getText();
+                String password = txtPassword.getText();
                 String mobile = txtMobile.getText();
                 String email = txtEmail.getText();
                 String address = txtAddress.getText();
-                LocalDate dob = txtDob.getValue();
+//                LocalDate dob = txtDob.getValue();
 
-                UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
+                UserDTO userDTO = new UserDTO(id,name,password,mobile,email,address);
                 /*boolean saved = userBO.saveUsers(userDTO);
                 if(saved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
@@ -133,49 +142,49 @@ public class AdminUserFormController implements Initializable {
             //////////////////////////////////////////////////////////////////////////////////////
 
             if(DataValidateController.userIdValidate(txtID.getText())){
-                userIdValiidate.setText("");
+                userIdValidate.setText("");
 
                 if (DataValidateController.userNameValidate(txtUserName.getText())) {
-                    userNameValiidate.setText("");
+                    userNameValidate.setText("");
 
-                    if (DataValidateController.userMobileValidate(txtMobile.getText())){
-                        userMobileValiidate.setText("");
+                    if(DataValidateController.userPasswordValidate(txtPassword.getText())) {
+                        userPasswordValidate.setText("");
 
-                        if(DataValidateController.emailCheck(txtEmail.getText())){
-                            userEmailValiidate.setText("");
+                        if (DataValidateController.userMobileValidate(txtMobile.getText())) {
+                            userMobileValidate.setText("");
 
-                            if(DataValidateController.addressValidate(txtAddress.getText())){
-                                userAddressValiidate.setText("");
-                                try {
+                            if (DataValidateController.emailCheck(txtEmail.getText())) {
+                                userEmailValidate.setText("");
+
+                                if (DataValidateController.addressValidate(txtAddress.getText())) {
+                                    userAddressValidate.setText("");
                                     boolean saved = userBO.saveUsers(userDTO);
-                                    if(saved){
-                                        new Alert(Alert.AlertType.CONFIRMATION,"User Saved Successfully").show();
+                                    if (saved) {
+                                        new Alert(Alert.AlertType.CONFIRMATION, "User Saved Successfully").show();
                                         loadAllUsers();
                                     }
-                                } catch (SQLException e) {
-                                    new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-                                } /*catch (ClassNotFoundException e) {
-                                    throw new RuntimeException(e);
-                                }*/
-                            }else {
-                                userAddressValiidate.setText("Invalid Address !");
+                                } else {
+                                    userAddressValidate.setText("Invalid Address !");
+                                }
+
+
+                            } else {
+                                userEmailValidate.setText("Invalid Email !");
                             }
 
-
-                        }else {
-                            userEmailValiidate.setText("Invalid Email !");
+                        } else {
+                            userMobileValidate.setText("Invalid tel.Include 10 charcters !");
                         }
-
                     }else {
-                        userMobileValiidate.setText("Invalid tel.Include 10 charcters !");
+                        userPasswordValidate.setText("Invalid Password !");
                     }
 
                 }else{
-                    userNameValiidate.setText("Include atleast 4 characters !");
+                    userNameValidate.setText("Include atleast 4 characters !");
                 }
 
             }else {
-                userIdValiidate.setText("Invalid customer Id !");
+                userIdValidate.setText("Invalid user Id !");
             }
 
 
@@ -187,12 +196,13 @@ public class AdminUserFormController implements Initializable {
     void btnUpdateOnAction(ActionEvent event) throws SQLException {
         String id = txtID.getText();
         String name = txtUserName.getText();
+        String password = txtPassword.getText();
         String mobile = txtMobile.getText();
         String email = txtEmail.getText();
         String address = txtAddress.getText();
-        LocalDate dob = txtDob.getValue();
+//        LocalDate dob = txtDob.getValue();
 
-        UserDTO userDTO = new UserDTO(id,name,mobile,email,address,dob);
+        UserDTO userDTO = new UserDTO(id,name,password,mobile,email,address);
         boolean updated = userBO.updateUsers(userDTO);
         if (updated){
             System.out.println("Update Successfully");
@@ -211,30 +221,32 @@ public class AdminUserFormController implements Initializable {
     private void setCellValueFactory(){
         colUserId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colUserName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         colMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+//        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
     }
 
-    private void loadAllUsers() throws SQLException {
+    /*private void loadAllUsers() throws SQLException {
         tblUser.getItems().clear();
         ArrayList<UserDTO> allUsers = userBO.getAllUsers();
         for(UserDTO allUser : allUsers){
             tblUser.getItems().addAll(new UserTM(
                     allUser.getId(),
                     allUser.getName(),
+                    allUser.getPassword(),
                     allUser.getMobile(),
                     allUser.getEmail(),
-                    allUser.getAddress(),
-                    allUser.getDob()
+                    allUser.getAddress()
+//                    allUser.getDob()
             ));
         }
-    }
+    }*/
 
 
 
-    /*private void loadAllUsers() {
+    private void loadAllUsers() {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();
             tblUser.getItems().clear();
             try {
@@ -243,10 +255,10 @@ public class AdminUserFormController implements Initializable {
                 UserTM userTM = new UserTM(
                         dto.getId(),
                         dto.getName(),
+                        dto.getPassword(),
                         dto.getMobile(),
                         dto.getEmail(),
-                        dto.getAddress(),
-                        dto.getDob()
+                        dto.getAddress()
                 );
                 obList.add(userTM);
             }
@@ -254,7 +266,7 @@ public class AdminUserFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }*/
+    }
 
 
 }

@@ -23,6 +23,9 @@ public class User {
     @Column(name = "user_name")
     private String name;
 
+    @Column(name = "user_password")
+    private String password;
+
     @Column(name = "user_mobile")
     private String mobile;
 
@@ -32,8 +35,8 @@ public class User {
     @Column(name = "user_address")
     private String address;
 
-    @Column(name = "user_dob")
-    private LocalDate dob;
+   /* @Column(name = "user_dob")
+    private LocalDate dob;*/
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
