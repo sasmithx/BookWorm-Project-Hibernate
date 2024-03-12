@@ -89,5 +89,31 @@ public class DataValidateController {
 
     //////////////////////////////// BRANCH ////////////////////////////////////////////////
 
+    public static boolean branchIdValidate(String branchId){
+        String branchRegex = "^(BR)[0-9]{3}$";
+        Pattern pattern = Pattern.compile(branchRegex);
+        Matcher matcher = pattern.matcher(branchId);
+        return matcher.matches();
+    }
 
+    public static boolean branchNameValidate(String branchName){
+        String branchRegex = "[A-z @ 0-9]{4,20}";
+        Pattern pattern = Pattern.compile(branchRegex);
+        Matcher matcher = pattern.matcher(branchName);
+        return matcher.matches();
+    }
+
+    public static boolean branchLocationValidate(String branchLocation){
+        String branchRegex = "[A-z @ 0-9]{4,20}";
+        Pattern pattern = Pattern.compile(branchRegex);
+        Matcher matcher = pattern.matcher(branchLocation);
+        return matcher.matches();
+    }
+
+    public static boolean branchMobile(String branchMobile){
+        String branchRegex = "^(?:7|0|(?:\\\\\\\\+94))[0-9]{9,10}$";
+        Pattern pattern = Pattern.compile(branchRegex);
+        Matcher matcher = pattern.matcher(branchMobile);
+        return matcher.matches();
+    }
 }
