@@ -73,4 +73,12 @@ public class BookDAOImpl implements BookDAO {
         String bookId = (String) namedquery.setMaxResults(1).uniqueResult();
         return bookId;
     }
+
+    @Override
+    public int bookCount() {
+        String sql = "SELECT COUNT(B.id) FROM Book AS B";
+        Query query = session.createQuery(sql);
+        Long count = (Long) query.getSingleResult();
+        return Math.toIntExact(count);
+    }
 }
