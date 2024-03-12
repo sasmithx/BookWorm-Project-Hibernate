@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DataValidateController {
+
+    /////////////////////////////// USER//////////////////////////////////////////////////
     public static boolean userIdValidate(String userId){
         String userRegex = "^(U)[0-9]{3}$";
         Pattern pattern = Pattern.compile(userRegex);
@@ -36,6 +38,22 @@ public class DataValidateController {
         String userRegex = "[A-z @ 0-9]{4,20}";
         Pattern pattern = Pattern.compile(userRegex);
         Matcher matcher = pattern.matcher(address);
+        return matcher.matches();
+    }
+
+    //////////////////////////////// BOOK ////////////////////////////////////////////////
+
+    public static boolean bookIdValidate(String bookId){
+        String bookRegex = "^(B)[0-9]{3}$";
+        Pattern pattern = Pattern.compile(bookRegex);
+        Matcher matcher = pattern.matcher(bookId);
+        return matcher.matches();
+    }
+
+    public static boolean bookNameValidate(String bookName){
+        String bookRegex = "^[A-Za-z0-9\\s\\-_',.()]+$\n";
+        Pattern pattern = Pattern.compile(bookRegex);
+        Matcher matcher = pattern.matcher(bookName);
         return matcher.matches();
     }
 }
