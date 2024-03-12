@@ -56,4 +56,13 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(bookName);
         return matcher.matches();
     }
+
+    public static boolean authorName(String authorName){
+        String bookRegex = "^[A-z\\s]{4,15}$";
+        Pattern pattern = Pattern.compile(bookRegex);
+        Matcher matcher = pattern.matcher(authorName);
+        return matcher.matches();
+    }
+
+
 }
