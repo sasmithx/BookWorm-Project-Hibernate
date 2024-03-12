@@ -87,8 +87,6 @@ public class AdminUserFormController implements Initializable {
     private Label userPasswordValidate;
 
 
-
-
     UserBO userBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.UserBO);
 
     @FXML
@@ -222,7 +220,7 @@ public class AdminUserFormController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
 
-    /*private void loadAllUsers() throws SQLException {
+   /* private void loadAllUsers() throws SQLException {
         tblUser.getItems().clear();
         ArrayList<UserDTO> allUsers = userBO.getAllUsers();
         for(UserDTO allUser : allUsers){
@@ -233,7 +231,6 @@ public class AdminUserFormController implements Initializable {
                     allUser.getMobile(),
                     allUser.getEmail(),
                     allUser.getAddress()
-//                    allUser.getDob()
             ));
         }
     }*/
