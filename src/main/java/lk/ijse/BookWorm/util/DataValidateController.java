@@ -60,7 +60,7 @@ public class DataValidateController {
     }
 
     public static boolean bookNameValidate(String bookName){
-        String bookRegex = "^[A-Za-z0-9\\s\\-_',.()]+$\n";
+        String bookRegex = "^[A-z\\s]{4,15}$";
         Pattern pattern = Pattern.compile(bookRegex);
         Matcher matcher = pattern.matcher(bookName);
         return matcher.matches();
@@ -74,7 +74,7 @@ public class DataValidateController {
     }
 
     public static boolean genreValidate(String genre){
-        String bookRegex = "^(fiction|non-fiction|science fiction|fantasy|mystery|thriller|romance|horror|drama|biography|history|self-help)$\n";
+        String bookRegex = "^[A-z\\s]{4,15}$";
         Pattern pattern = Pattern.compile(bookRegex);
         Matcher matcher = pattern.matcher(genre);
         return matcher.matches();

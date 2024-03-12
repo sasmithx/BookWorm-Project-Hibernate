@@ -5,16 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.BookDTO;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.BookBO;
 import lk.ijse.BookWorm.tm.BookTM;
+import lk.ijse.BookWorm.util.DataValidateController;
 import lombok.SneakyThrows;
 
 import java.net.URL;
@@ -59,6 +57,22 @@ public class AdminBookFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> colQty;
 
+    @FXML
+    private Label authorNameValidate;
+
+    @FXML
+    private Label bookIdValidate;
+
+    @FXML
+    private Label bookNameValidate;
+
+    @FXML
+    private Label qtyValidate;
+
+    @FXML
+    private Label genreValidate;
+
+
     BookBO bookBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BookBO);
 
     @FXML
@@ -91,19 +105,68 @@ public class AdminBookFormController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id = txtID.getText();
-        String bookName = txtBookName.getText();
-        String authorName = txtAuthorName.getText();
-        String genre = txtGenre.getText();
-        int qty = Integer.parseInt(txtQty.getText());
+        if(txtID.getText().isEmpty() || txtBookName.getText().isEmpty() || txtAuthorName.getText().isEmpty() || txtGenre.getText().isEmpty() || txtQty.getText().isEmpty()){
+            new Alert(Alert.AlertType.WARNING,"Please Fill All Empty Fileds Before Add New Book !").show();
+        }else {
+            String id = txtID.getText();
+            String bookName = txtBookName.getText();
+            String authorName = txtAuthorName.getText();
+            String genre = txtGenre.getText();
+            int qty = Integer.parseInt(txtQty.getText());
 
-        BookDTO bookDTO = new BookDTO(id,bookName,authorName,genre,qty);
-        boolean saved = bookBO.saveBooks(bookDTO);
-        if(saved){
-            System.out.println("Saved Successfully");
-            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
-            loadAllBooks();
+            BookDTO bookDTO = new BookDTO(id,bookName,authorName,genre,qty);
+
+
+            /*boolean saved = bookBO.saveBooks(bookDTO);
+            if(saved){
+                System.out.println("Saved Successfully");
+                new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+                loadAllBooks();
+            }*/
+
+            /////////////////////////////////////// VALIDATION ///////////////////////////////////////
+
+            if(DataValidateController.bookIdValidate(txtID.getText())){
+                bookIdValidate.setText("");
+
+                if (DataValidateController.bookNameValidate(txtBookName.getText())) {
+                    bookNameValidate.setText("");
+
+                    if(DataValidateController.authorNameValidate(txtAuthorName.getText())) {
+                        authorNameValidate.setText("");
+
+                        if (DataValidateController.genreValidate(txtGenre.getText())) {
+                            genreValidate.setText("");
+
+                            if (DataValidateController.qtyValidate(txtQty.getText())) {
+                                qtyValidate.setText("");
+
+                                    boolean saved = bookBO.saveBooks(bookDTO);
+                                    if (saved) {
+                                        new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+                                        loadAllBooks();
+                                    }
+
+                            } else {
+                                qtyValidate.setText("Invalid Qunatity !");
+                            }
+
+                        } else {
+                            genreValidate.setText("Invalid Genre !");
+                        }
+                    }else {
+                        authorNameValidate.setText("Invalid Authorname !");
+                    }
+
+                }else{
+                    bookNameValidate.setText("Invalid Bookname !");
+                }
+
+            }else {
+                bookIdValidate.setText("Invalid book Id !");
+            }
         }
+
     }
 
     @FXML

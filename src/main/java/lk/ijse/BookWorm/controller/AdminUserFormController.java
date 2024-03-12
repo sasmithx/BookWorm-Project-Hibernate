@@ -127,7 +127,7 @@ public class AdminUserFormController implements Initializable {
                 String mobile = txtMobile.getText();
                 String email = txtEmail.getText();
                 String address = txtAddress.getText();
-//                LocalDate dob = txtDob.getValue();
+
 
                 UserDTO userDTO = new UserDTO(id,name,password,mobile,email,address);
                 /*boolean saved = userBO.saveUsers(userDTO);
@@ -136,7 +136,7 @@ public class AdminUserFormController implements Initializable {
                 loadAllUsers();*/
 
 
-            //////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////// VALIDATION ////////////////////////////////////////////////
 
             if(DataValidateController.userIdValidate(txtID.getText())){
                 userIdValidate.setText("");
@@ -163,8 +163,6 @@ public class AdminUserFormController implements Initializable {
                                 } else {
                                     userAddressValidate.setText("Invalid Address !");
                                 }
-
-
                             } else {
                                 userEmailValidate.setText("Invalid Email !");
                             }
