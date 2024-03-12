@@ -57,12 +57,24 @@ public class DataValidateController {
         return matcher.matches();
     }
 
-    public static boolean authorName(String authorName){
+    public static boolean authorNameValidate(String authorName){
         String bookRegex = "^[A-z\\s]{4,15}$";
         Pattern pattern = Pattern.compile(bookRegex);
         Matcher matcher = pattern.matcher(authorName);
         return matcher.matches();
     }
 
+    public static boolean genreValidate(String genre){
+        String bookRegex = "^(fiction|non-fiction|science fiction|fantasy|mystery|thriller|romance|horror|drama|biography|history|self-help)$\n";
+        Pattern pattern = Pattern.compile(bookRegex);
+        Matcher matcher = pattern.matcher(genre);
+        return matcher.matches();
+    }
 
+    public static boolean qtyValidate(String qty){
+        String bookRegex = "^[1-9][0-9]*$";
+        Pattern pattern = Pattern.compile(bookRegex);
+        Matcher matcher = pattern.matcher(qty);
+        return matcher.matches();
+    }
 }
