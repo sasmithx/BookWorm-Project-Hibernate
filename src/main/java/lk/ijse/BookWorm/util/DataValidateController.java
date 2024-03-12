@@ -116,4 +116,11 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(branchMobile);
         return matcher.matches();
     }
+
+    public static boolean branchEmail(String branchEmail){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(branchEmail);
+        return matcher.matches();
+    }
 }
