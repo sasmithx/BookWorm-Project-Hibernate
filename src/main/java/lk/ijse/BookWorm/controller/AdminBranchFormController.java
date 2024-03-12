@@ -198,7 +198,7 @@ public class AdminBranchFormController implements Initializable {
 
     private void loadAllBranches() {
         ObservableList<BranchTM> obList = FXCollections.observableArrayList();
-//        tblBranch.getItems().clear();
+        tblBranch.getItems().clear();
         try {
             List<BranchDTO> list = branchBO.getAllBranches();
             for(BranchDTO dto:list){
