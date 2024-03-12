@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.BranchDTO;
@@ -59,6 +56,21 @@ public class AdminBranchFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colName;
+
+    @FXML
+    private Label branchEmailValidate;
+
+    @FXML
+    private Label branchIdValidate;
+
+    @FXML
+    private Label branchLocationValidate;
+
+    @FXML
+    private Label branchMobileValidate;
+
+    @FXML
+    private Label branchNameValidate;
 
 
     BranchBO branchBO = BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BranchBO);

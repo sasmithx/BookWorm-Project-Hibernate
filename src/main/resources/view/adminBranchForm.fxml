@@ -58,5 +58,10 @@
       <JFXButton layoutX="590.0" layoutY="342.0" onAction="#btnUpdateOnAction" style="-fx-background-color: lightgreen;" text="Update" />
       <JFXButton layoutX="660.0" layoutY="342.0" onAction="#btnSaveOnAction" style="-fx-background-color: lightblue;" text="Save" />
       <JFXButton layoutX="718.0" layoutY="342.0" onAction="#btnDeleteOnAction" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Label fx:id="branchIdValidate" layoutX="28.0" layoutY="175.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="branchNameValidate" layoutX="522.0" layoutY="175.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="branchLocationValidate" layoutX="28.0" layoutY="281.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="branchMobileValidate" layoutX="522.0" layoutY="281.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="branchEmailValidate" layoutX="28.0" layoutY="383.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
    </children>
 </Pane>
