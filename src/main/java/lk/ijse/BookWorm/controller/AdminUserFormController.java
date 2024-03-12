@@ -104,7 +104,6 @@ public class AdminUserFormController implements Initializable {
         txtMobile.clear();
         txtEmail.clear();
         txtAddress.clear();
-//        txtDob.setValue(null);
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws SQLException {
@@ -186,9 +185,6 @@ public class AdminUserFormController implements Initializable {
             }else {
                 userIdValidate.setText("Invalid user Id !");
             }
-
-
-
         }
     }
 
@@ -200,7 +196,6 @@ public class AdminUserFormController implements Initializable {
         String mobile = txtMobile.getText();
         String email = txtEmail.getText();
         String address = txtAddress.getText();
-//        LocalDate dob = txtDob.getValue();
 
         UserDTO userDTO = new UserDTO(id,name,password,mobile,email,address);
         boolean updated = userBO.updateUsers(userDTO);
@@ -225,7 +220,6 @@ public class AdminUserFormController implements Initializable {
         colMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-//        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
     }
 
     /*private void loadAllUsers() throws SQLException {
