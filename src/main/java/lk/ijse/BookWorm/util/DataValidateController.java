@@ -110,14 +110,14 @@ public class DataValidateController {
         return matcher.matches();
     }
 
-    public static boolean branchMobile(String branchMobile){
+    public static boolean branchMobileValidate(String branchMobile){
         String branchRegex = "^(?:7|0|(?:\\\\\\\\+94))[0-9]{9,10}$";
         Pattern pattern = Pattern.compile(branchRegex);
         Matcher matcher = pattern.matcher(branchMobile);
         return matcher.matches();
     }
 
-    public static boolean branchEmail(String branchEmail){
+    public static boolean branchEmailValidate(String branchEmail){
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(branchEmail);

@@ -12,6 +12,7 @@ import lk.ijse.BookWorm.dto.BranchDTO;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.BranchBO;
 import lk.ijse.BookWorm.tm.BranchTM;
+import lk.ijse.BookWorm.util.DataValidateController;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -104,18 +105,65 @@ public class AdminBranchFormController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id = txtID.getText();
-        String name = txtName.getText();
-        String location = txtLocation.getText();
-        String mobile = txtMobile.getText();
-        String email = txtEmail.getText();
+        if(txtID.getText().isEmpty() || txtName.getText().isEmpty() || txtLocation.getText().isEmpty() || txtMobile.getText().isEmpty() || txtEmail.getText().isEmpty()){
+            new Alert(Alert.AlertType.WARNING,"Please Fill All Empty Fileds Before Add New Branch !").show();
+        }else {
+            String id = txtID.getText();
+            String name = txtName.getText();
+            String location = txtLocation.getText();
+            String mobile = txtMobile.getText();
+            String email = txtEmail.getText();
 
-        BranchDTO branchDTO = new BranchDTO(id,name,location,mobile,email);
-        boolean saved = branchBO.saveBranches(branchDTO);
-        if(saved){
-            new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
-            loadAllBranches();
+            BranchDTO branchDTO = new BranchDTO(id,name,location,mobile,email);
+           /* boolean saved = branchBO.saveBranches(branchDTO);
+            if(saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+                loadAllBranches();
+            }*/
+
+            ////////////////////////////////////// VALIDATION ////////////////////////////////////////////////
+
+            if(DataValidateController.branchIdValidate(txtID.getText())){
+                branchIdValidate.setText("");
+
+                if (DataValidateController.branchNameValidate(txtName.getText())) {
+                    branchNameValidate.setText("");
+
+                    if(DataValidateController.branchLocationValidate(txtLocation.getText())) {
+                        branchLocationValidate.setText("");
+
+                        if (DataValidateController.branchMobileValidate(txtMobile.getText())) {
+                            branchMobileValidate.setText("");
+
+                            if (DataValidateController.branchEmailValidate(txtEmail.getText())) {
+                                branchEmailValidate.setText("");
+
+                                    boolean saved = branchBO.saveBranches(branchDTO);
+                                    if (saved) {
+                                        new Alert(Alert.AlertType.CONFIRMATION,"Saved Successfully").show();
+                                        loadAllBranches();
+                                    }
+
+                            } else {
+                                branchEmailValidate.setText("Invalid Email !");
+                            }
+
+                        } else {
+                            branchMobileValidate.setText("Invalid tel.Include 10 charcters !");
+                        }
+                    }else {
+                        branchLocationValidate.setText("Invalid Location !");
+                    }
+
+                }else{
+                    branchNameValidate.setText("Invalid Branch Name !");
+                }
+
+            }else {
+                branchIdValidate.setText("Invalid branch Id !");
+            }
         }
+
     }
 
     @FXML
