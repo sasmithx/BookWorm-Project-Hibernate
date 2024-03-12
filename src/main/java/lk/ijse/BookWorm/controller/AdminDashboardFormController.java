@@ -1,7 +1,6 @@
 package lk.ijse.BookWorm.controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -56,6 +55,7 @@ public class AdminDashboardFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TimeNow();
         bookCount();
+        userCount();
     }
 
     private void TimeNow() {
@@ -88,5 +88,9 @@ public class AdminDashboardFormController implements Initializable {
 
     public void bookCount(){
         lblBookCount.setText(String.valueOf(adminDashBO.bookCount()));
+    }
+
+    public void userCount(){
+        lblUsers.setText(String.valueOf(adminDashBO.userCount()));
     }
 }

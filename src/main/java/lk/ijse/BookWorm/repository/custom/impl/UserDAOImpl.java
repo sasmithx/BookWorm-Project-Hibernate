@@ -71,4 +71,12 @@ public class UserDAOImpl implements UserDAO {
         String userId = (String) namedquery.setMaxResults(1).uniqueResult();
         return userId;
     }
+
+    @Override
+    public int userCount() {
+        String sql = "SELECT COUNT(U.id) FROM User AS U";
+        Query query = session.createQuery(sql);
+        Long count = (Long) query.getSingleResult();
+        return Math.toIntExact(count);
+    }
 }

@@ -31,6 +31,18 @@ public class AdminDashBOImpl implements AdminDashBO {
 
     @Override
     public int userCount() {
-        return 0;
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+
+        try{
+            userDAO.setSession(session);
+            int count = userDAO.userCount();
+
+            session.close();
+            return count;
+        }catch (Exception e){
+            session.close();
+            e.printStackTrace();
+            return -1;
+        }
     }
 }
