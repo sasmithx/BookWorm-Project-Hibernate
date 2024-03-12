@@ -31,4 +31,8 @@ public class Branch {
     @Column(name = "branch_email")
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
 }

@@ -34,4 +34,8 @@ public class User {
 
     @Column(name = "user_dob")
     private LocalDate dob;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
 }

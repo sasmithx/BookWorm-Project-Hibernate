@@ -77,4 +77,6 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(qty);
         return matcher.matches();
     }
+
+
 }

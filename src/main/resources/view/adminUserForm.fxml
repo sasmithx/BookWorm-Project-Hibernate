@@ -66,10 +66,10 @@
             <TableColumn fx:id="colDob" prefWidth="183.0" text="Date OF Birth" />
         </columns>
       </TableView>
-      <Label fx:id="userIdValiidate" layoutX="40.0" layoutY="195.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" textFill="#e74c3c" />
-      <Label fx:id="userNameValiidate" layoutX="491.0" layoutY="202.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" textFill="#e74c3c" />
-      <Label fx:id="userEmailValiidate" layoutX="491.0" layoutY="299.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" textFill="#e74c3c" />
-      <Label fx:id="userMobileValiidate" layoutX="40.0" layoutY="299.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" textFill="#e74c3c" />
-      <Label fx:id="userAddressValiidate" layoutX="40.0" layoutY="409.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" text="Label" textFill="#e74c3c" />
+      <Label fx:id="userIdValiidate" layoutX="40.0" layoutY="195.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="userNameValiidate" layoutX="491.0" layoutY="202.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="userEmailValiidate" layoutX="491.0" layoutY="299.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="userMobileValiidate" layoutX="40.0" layoutY="299.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
+      <Label fx:id="userAddressValiidate" layoutX="40.0" layoutY="409.0" prefHeight="18.0" prefWidth="276.0" style="-fx-background-radius: 20;" textFill="#e74c3c" />
    </children>
 </Pane>

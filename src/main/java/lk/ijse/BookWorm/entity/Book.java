@@ -30,4 +30,10 @@ public class Book {
 
     @Column(name = "book_quantity")
     private int qty;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+
 }
