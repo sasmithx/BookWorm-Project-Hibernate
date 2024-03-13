@@ -5,20 +5,19 @@ import lk.ijse.BookWorm.dto.TransactionDTO;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
 import lk.ijse.BookWorm.repository.custom.TransactionRepository;
-import lk.ijse.BookWorm.repository.custom.impl.TransactionRepositoryImpl;
 import lk.ijse.BookWorm.service.custom.TransactionService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 
-public class TransactionServiceImpl implements TransactionService {
+public class TransactionBOImpl implements TransactionService {
 
     TransactionRepository transactionRepository = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TransactionRepository);
     BookDAO bookDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.BookDAO);
     @Override
     public boolean saveTransaction(TransactionDTO transactionDTO) throws SQLException, ClassNotFoundException {
-        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        /*Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
         Transaction transaction = session.beginTransaction();
 
         transactionRepository.setSession(session);
@@ -37,7 +36,8 @@ public class TransactionServiceImpl implements TransactionService {
             session.close();
             e.printStackTrace();
             return false;
-        }
+        }*/
+        return true;
     }
 
 }
