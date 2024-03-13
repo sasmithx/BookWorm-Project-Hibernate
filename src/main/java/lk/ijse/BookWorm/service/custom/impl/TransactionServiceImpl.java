@@ -25,7 +25,7 @@ public class TransactionServiceImpl implements TransactionService {
         transactionRepository.save(transactionDTO.toEntity());
 
         bookDAO.setSession(session);
-        bookDAO.update();
+//        bookDAO.update();
 
 
         try{
