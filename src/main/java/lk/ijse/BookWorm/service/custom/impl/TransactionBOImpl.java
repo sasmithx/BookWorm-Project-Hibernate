@@ -1,43 +1,38 @@
 package lk.ijse.BookWorm.service.custom.impl;
 
-import lk.ijse.BookWorm.config.SessionFactoryConfig;
+import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.dto.TransactionDTO;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
-import lk.ijse.BookWorm.repository.custom.TransactionRepository;
-import lk.ijse.BookWorm.service.custom.TransactionService;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import lk.ijse.BookWorm.repository.custom.UserDAO;
+import lk.ijse.BookWorm.service.custom.TransactionBO;
 
 import java.sql.SQLException;
 
-public class TransactionBOImpl implements TransactionService {
+public class TransactionBOImpl implements TransactionBO {
 
-    TransactionRepository transactionRepository = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TransactionRepository);
+    UserDAO userDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.UserDAO);
     BookDAO bookDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.BookDAO);
+
+
+
     @Override
-    public boolean saveTransaction(TransactionDTO transactionDTO) throws SQLException, ClassNotFoundException {
-        /*Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        transactionRepository.setSession(session);
-        transactionRepository.save(transactionDTO.toEntity());
-
-        bookDAO.setSession(session);
-//        bookDAO.update();
-
-
-        try{
-            transaction.commit();
-            session.close();
-            return true;
-        } catch (Exception e){
-            transaction.rollback();
-            session.close();
-            e.printStackTrace();
-            return false;
-        }*/
-        return true;
+    public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
+        return null;
     }
 
+    @Override
+    public ObservableList<String> loadBookId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public String generateNextOrderId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public boolean placeOrder(TransactionDTO transactionDTO) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 }
