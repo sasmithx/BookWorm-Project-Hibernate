@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -35,5 +37,10 @@ public class Book {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "book"
+    )
+    private List<TransactionDetail> transactionDetails = new ArrayList<>();
 }

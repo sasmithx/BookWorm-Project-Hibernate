@@ -55,12 +55,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="510.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="510.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty.On Hand" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <TextField layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
       <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty" textFill="WHITE">
          <font>
