@@ -62,7 +62,7 @@
          </font>
       </Label>
       <TextField layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty.On Hand" textFill="WHITE">
+      <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -81,10 +81,11 @@
       </JFXButton>
       <TableView layoutX="48.0" layoutY="472.0" prefHeight="198.0" prefWidth="821.0">
         <columns>
-          <TableColumn prefWidth="168.0" text="Book ID" />
-          <TableColumn prefWidth="282.0" text="Title" />
-            <TableColumn prefWidth="168.0" text="Qty" />
-            <TableColumn prefWidth="202.0" text="Amount" />
+          <TableColumn prefWidth="119.0" text="Book ID" />
+          <TableColumn prefWidth="220.0" text="Title" />
+            <TableColumn prefWidth="131.0" text="Qty" />
+            <TableColumn prefWidth="177.0" text="Amount" />
+            <TableColumn prefWidth="173.0" text="Action" />
         </columns>
       </TableView>
       <Label layoutX="40.0" layoutY="733.0" text="Total Of Books:" textFill="WHITE">
