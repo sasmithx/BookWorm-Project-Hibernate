@@ -43,4 +43,12 @@ public class Book {
             mappedBy = "book"
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
+
+
+    /*@OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "book"
+    )
+    private List<TransactionDetail> transactionDetails = new ArrayList<>();*/
 }

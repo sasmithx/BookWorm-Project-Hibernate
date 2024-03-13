@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.repository;
 
 import lk.ijse.BookWorm.repository.custom.impl.BookDAOImpl;
 import lk.ijse.BookWorm.repository.custom.impl.BranchDAOImpl;
+import lk.ijse.BookWorm.repository.custom.impl.TransactionDAOImpl;
 import lk.ijse.BookWorm.repository.custom.impl.UserDAOImpl;
 
 public class DAOFactory {

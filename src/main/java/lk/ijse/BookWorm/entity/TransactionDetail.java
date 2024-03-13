@@ -15,8 +15,18 @@ import javax.persistence.*;
 @Table(name = "Transaction_detail")
 public class TransactionDetail {
 
+
     @EmbeddedId
     private TransactionDetailPK transactionDetailPK;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "book_id",
+            insertable = false,
+            updatable = false
+    )
+    private Book book;
+
 
     @ManyToOne
     @JoinColumn(
@@ -26,11 +36,5 @@ public class TransactionDetail {
     )
     private Transaction transaction;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "book_id",
-            insertable = false,
-            updatable = false
-    )
-    private Book book;
+
 }
