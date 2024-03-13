@@ -38,6 +38,9 @@ public class Transaction {
 
     @Column(name = "trasaction_type")
     private String transactionType;
+    
+    @Column(name = "tm_list")
+    private List<CartTm> tmList = new ArrayList<>();
 
 
     @ManyToOne
@@ -51,4 +54,14 @@ public class Transaction {
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
 
+    public Transaction(int id, LocalDate orderDate, String userName, int qty,  int total, String dueDate, String transactionType) {
+        this.id=id;
+        this.orderDate=orderDate;
+        this.userName=userName;
+        this.qty=qty;
+        this.total=total;
+        this.dueDate=dueDate;
+        this.transactionType=transactionType;
+
+    }
 }

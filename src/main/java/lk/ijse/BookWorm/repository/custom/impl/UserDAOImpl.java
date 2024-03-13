@@ -1,5 +1,7 @@
 package lk.ijse.BookWorm.repository.custom.impl;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.custom.UserDAO;
 import org.hibernate.Session;
@@ -52,6 +54,20 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void setSession(Session session) {
         this.session=session;
+    }
+
+    @Override
+    public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
+        ObservableList<String> userData = FXCollections.observableArrayList();
+
+        String hql = "SELECT u.id FROM User u";
+        Query<String> query = session.createQuery(hql, String.class);
+
+        List<String> result = query.list();
+
+        userData.addAll(result);
+
+        return userData;
     }
 
     @Override

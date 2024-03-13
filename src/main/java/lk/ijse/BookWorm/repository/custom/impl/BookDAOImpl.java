@@ -1,8 +1,11 @@
 package lk.ijse.BookWorm.repository.custom.impl;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
+import lk.ijse.BookWorm.tm.CartTm;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -55,6 +58,25 @@ public class BookDAOImpl implements BookDAO {
         this.session=session;
     }
 
+
+    @Override
+    public boolean updateQty(List<CartTm> tmList) throws SQLException, ClassNotFoundException {
+
+    }
+
+    @Override
+    public ObservableList<String> loadBookId() throws SQLException, ClassNotFoundException {
+        ObservableList<String> bookData = FXCollections.observableArrayList();
+
+        String hql = "SELECT b.id FROM Book b";
+        Query<String> query = session.createQuery(hql, String.class);
+
+        List<String> result = query.list();
+
+        bookData.addAll(result);
+
+        return bookData;
+    }
 
     @Override
     public Book getBookyId(String id) {
