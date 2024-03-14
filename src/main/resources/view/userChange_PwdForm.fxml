@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.AdminChangePasswordFormController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserChangePwdFormController">
    <children>
       <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="36.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -34,5 +35,20 @@
             <Image url="@../assests/icon/security-user.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnLeftBack" buttonType="RAISED" contentDisplay="TOP" layoutX="54.0" layoutY="144.0" onAction="#btnBackOnAction" prefHeight="92.0" prefWidth="76.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="81.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/arrow-circle-left.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

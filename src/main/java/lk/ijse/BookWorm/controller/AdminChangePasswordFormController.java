@@ -32,7 +32,7 @@ public class AdminChangePasswordFormController {
     @FXML
     void btnBackOnAction(ActionEvent event) {
         btnLeftBack.getScene().getWindow().hide();
-        Navigation.changeStage("/view/adminGlobalForm.fxml","DASHBOARD FORM");
+        Navigation.changeStage("/view/adminGlobalForm.fxml","GLOBAL FORM");
     }
 
 }
