@@ -1,9 +1,6 @@
 package lk.ijse.BookWorm.repository;
 
-import lk.ijse.BookWorm.repository.custom.impl.BookDAOImpl;
-import lk.ijse.BookWorm.repository.custom.impl.BranchDAOImpl;
-import lk.ijse.BookWorm.repository.custom.impl.TransactionDAOImpl;
-import lk.ijse.BookWorm.repository.custom.impl.UserDAOImpl;
+import lk.ijse.BookWorm.repository.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -15,7 +12,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        UserDAO,BranchDAO,BookDAO,TransactionDAO
+        UserDAO,BranchDAO,BookDAO,TransactionDAO,TransactionDetailDAO
     }
 
     public <T extends SuperDAO>T getDAO(DAOTypes daoTypes){
@@ -28,6 +25,8 @@ public class DAOFactory {
                 return (T) new BookDAOImpl();
             case TransactionDAO:
                 return (T) new TransactionDAOImpl();
+            case TransactionDetailDAO:
+                return (T) new TransactionDetailDAOImpl();
         }
         return null;
     }

@@ -40,9 +40,9 @@ public class AdminLoginFormController {
 
     @FXML
     void btnLoginOnAction(ActionEvent event) throws IOException {
-//        Navigation.switchNavigation("adminGlobalForm.fxml",event);
+        Navigation.switchNavigation("adminGlobalForm.fxml",event);
 
-        id = (String) cmbAdminId.getValue();
+//        id = (String) cmbAdminId.getValue();
 
 
 

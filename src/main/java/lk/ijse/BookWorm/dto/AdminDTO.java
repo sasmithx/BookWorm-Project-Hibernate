@@ -8,9 +8,9 @@ public class AdminDTO {
     private String password;
 
 
-    public Admin toEntity(){
+   /* public Admin toEntity(){
         System.out.println(id);
         Admin admin = new Admin(id,userName,password);
         return admin;
-    }
+    }*/
 }

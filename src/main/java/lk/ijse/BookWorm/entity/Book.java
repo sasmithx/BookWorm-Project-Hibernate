@@ -44,6 +44,12 @@ public class Book {
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
 
+    public Book(String bookID, String title, int qty) {
+        this.id=bookID;
+        this.bookName=title;
+        this.qty=qty;
+    }
+
 
     /*@OneToMany(
             cascade = CascadeType.ALL,

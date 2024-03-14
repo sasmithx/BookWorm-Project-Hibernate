@@ -3,7 +3,6 @@ package lk.ijse.BookWorm.repository.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.entity.Book;
-import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
 import lk.ijse.BookWorm.tm.CartTm;
 import org.hibernate.Session;
@@ -17,8 +16,9 @@ public class BookDAOImpl implements BookDAO {
     private Session session;
 
     @Override
-    public void save(Book entity) throws SQLException, ClassNotFoundException {
+    public boolean save(Book entity) throws SQLException, ClassNotFoundException {
         session.save(entity);
+        return false;
     }
 
     @Override

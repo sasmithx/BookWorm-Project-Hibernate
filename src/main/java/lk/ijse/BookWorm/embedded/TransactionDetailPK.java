@@ -1,5 +1,6 @@
 package lk.ijse.BookWorm.embedded;
 
+import lk.ijse.BookWorm.entity.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

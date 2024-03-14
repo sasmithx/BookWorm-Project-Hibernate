@@ -14,8 +14,9 @@ public class BranchDAOImpl implements BranchDAO {
     private Session session;
 
     @Override
-    public void save(Branch entity) throws SQLException, ClassNotFoundException {
+    public boolean save(Branch entity) throws SQLException, ClassNotFoundException {
         session.save(entity);
+        return false;
     }
 
     @Override

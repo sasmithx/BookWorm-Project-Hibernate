@@ -15,8 +15,9 @@ public class TransactionDAOImpl implements TransactionDAO {
     private Session session;
 
     @Override
-    public void save(Transaction entity) throws SQLException, ClassNotFoundException {
+    public boolean save(Transaction entity) throws SQLException, ClassNotFoundException {
         session.save(entity);
+        return false;
     }
 
     @Override

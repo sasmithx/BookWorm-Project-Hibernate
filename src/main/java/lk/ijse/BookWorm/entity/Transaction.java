@@ -64,4 +64,9 @@ public class Transaction {
         this.transactionType=transactionType;
 
     }
+
+    public Transaction(String bookID, String title, int qty) {
+        id=bookID;
+        this.qty=qty;
+    }
 }

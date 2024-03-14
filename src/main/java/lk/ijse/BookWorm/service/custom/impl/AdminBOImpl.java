@@ -21,6 +21,7 @@ public class AdminBOImpl implements AdminBO {
         }catch (Exception e){
 
         }
+        return true;
     }
 
     @Override

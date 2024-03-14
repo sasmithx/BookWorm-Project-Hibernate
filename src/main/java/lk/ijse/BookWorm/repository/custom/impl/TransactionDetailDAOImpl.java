@@ -1,5 +1,6 @@
 package lk.ijse.BookWorm.repository.custom.impl;
 
+import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.TransactionDetail;
 import lk.ijse.BookWorm.repository.custom.TransactionDetailDAO;
 import lk.ijse.BookWorm.tm.CartTm;
@@ -30,13 +31,30 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
 
 
             TransactionDetail transactionDetail = new TransactionDetail();
-          /*  transactionDetail.setTransaction(transactionId);
+            /*transactionDetail.setTransaction(transactionId);
             transactionDetail.(cartTm.getBookID());
             transactionDetail.(cartTm.getTitle());
             transactionDetail.(cartTm.getQty());
             transactionDetail.(cartTm.getAmount());*/
 
+            transactionDetail.setBook(
+                    new Book(cartTm.getBookID(),
+                            cartTm.getTitle(),
+                            cartTm.getQty()
+                            )
+                    );
+
+            transactionDetail.setTransaction(
+                     new lk.ijse.BookWorm.entity.Transaction(
+                             cartTm.getBookID(),
+                             cartTm.getTitle(),
+                             cartTm.getQty()
+                     )
+            );
+
             session.save(transactionDetail);
+
+
 
             transaction.commit();
             return true;

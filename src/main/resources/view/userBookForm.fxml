@@ -78,7 +78,6 @@
           <TableColumn prefWidth="119.0" text="Book ID" />
           <TableColumn prefWidth="220.0" text="Title" />
             <TableColumn prefWidth="131.0" text="Qty" />
-            <TableColumn prefWidth="177.0" text="Amount" />
             <TableColumn prefWidth="173.0" text="Action" />
         </columns>
       </TableView>

@@ -12,8 +12,9 @@ public class AdminDAOImpl implements AdminDAO {
 
     private Session session;
     @Override
-    public void save(Admin entity) throws SQLException, ClassNotFoundException {
+    public boolean save(Admin entity) throws SQLException, ClassNotFoundException {
         session.save(entity);
+        return false;
     }
 
     @Override
