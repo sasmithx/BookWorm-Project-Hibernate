@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.service.custom.impl;
 
 import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.dto.TransactionDTO;
+import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.Transaction;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
@@ -16,6 +17,7 @@ public class TransactionBOImpl implements TransactionBO {
     UserDAO userDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.UserDAO);
     BookDAO bookDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.BookDAO);
     TransactionDAO transactionDAO = DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TransactionDAO);
+
 
     @Override
     public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
@@ -48,6 +50,9 @@ public class TransactionBOImpl implements TransactionBO {
 
        transactionDAO.save(transaction);
 
-       bookDAO.update();
+       bookDAO.update((Book) transactionDTO.getTmList());
+
+//       tra
+        return true;
     }
 }

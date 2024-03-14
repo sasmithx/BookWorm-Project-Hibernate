@@ -12,6 +12,7 @@ import java.util.List;
 public interface BookDAO extends CrudDAO<Book,String> {
 
     boolean updateQty(List<CartTm> tmList) throws SQLException, ClassNotFoundException;
+    boolean updateBook(CartTm cartTm) throws SQLException, ClassNotFoundException;
     ObservableList<String> loadBookId() throws SQLException, ClassNotFoundException;
     Book getBookyId(String id);
     String generateNextId();

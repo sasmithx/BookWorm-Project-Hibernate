@@ -2,17 +2,20 @@ package lk.ijse.BookWorm.dto;
 
 import lk.ijse.BookWorm.entity.Transaction;
 import lk.ijse.BookWorm.entity.User;
+import lk.ijse.BookWorm.tm.CartTm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransactionDTO {
-    private int id;
+    private String id;
     private LocalDate orderDate;
     private String userName;
     private int qty;
@@ -20,6 +23,7 @@ public class TransactionDTO {
     private String dueDate;
     private String transactionType;
     private User user;
+    private List<CartTm> tmList = new ArrayList<>();
 
     public Transaction toEntity(){
         Transaction transaction = new Transaction();

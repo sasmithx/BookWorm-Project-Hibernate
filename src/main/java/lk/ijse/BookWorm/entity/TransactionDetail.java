@@ -37,4 +37,5 @@ public class TransactionDetail {
     private Transaction transaction;
 
 
+
 }

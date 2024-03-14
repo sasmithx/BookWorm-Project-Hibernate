@@ -16,5 +16,5 @@ public class TransactionDetailPK implements Serializable {
     @Column(name = "book_id")
     private String bookId;
     @Column(name = "transaction_id")
-    private int transactionID;
+    private String transactionID;
 }

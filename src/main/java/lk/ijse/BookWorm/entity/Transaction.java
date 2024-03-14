@@ -21,7 +21,7 @@ public class Transaction {
 
     @Id
     @Column(name = "transaction_id")
-    private int id;
+    private String id;
     @Column(name = "order_date")
     private LocalDate orderDate;
 
@@ -39,8 +39,8 @@ public class Transaction {
     @Column(name = "trasaction_type")
     private String transactionType;
     
-    @Column(name = "tm_list")
-    private List<CartTm> tmList = new ArrayList<>();
+   /* @Column(name = "tm_list")
+    private List<CartTm> tmList = new ArrayList<>();*/
 
 
     @ManyToOne
@@ -54,7 +54,7 @@ public class Transaction {
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
 
-    public Transaction(int id, LocalDate orderDate, String userName, int qty,  int total, String dueDate, String transactionType) {
+    public Transaction(String id, LocalDate orderDate, String userName, int qty,  int total, String dueDate, String transactionType) {
         this.id=id;
         this.orderDate=orderDate;
         this.userName=userName;
