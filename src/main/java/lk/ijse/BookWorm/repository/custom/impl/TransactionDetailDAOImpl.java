@@ -25,15 +25,28 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
     public boolean saveOrderDetails(String transactionId, CartTm cartTm) throws SQLException, ClassNotFoundException {
         Transaction transaction = session.beginTransaction();
 
-       /* TransactionDetail transactionDetail = new TransactionDetail(
-                cartTm.getBookID(),
-                cartTm.getTitle(),
-                cartTm.getQty(),
-                cartTm.getAmount()
-        );
-            transactionDetail.setTransaction(transactionId);*/
+        try {
+            transaction = session.beginTransaction();
 
-        return true;
+
+            TransactionDetail transactionDetail = new TransactionDetail();
+            transactionDetail.setTransaction(transactionId);
+            transactionDetail.(cartTm.getBookID());
+            transactionDetail.(cartTm.getTitle());
+            transactionDetail.(cartTm.getQty());
+            transactionDetail.(cartTm.getAmount());
+
+            session.save(transactionDetail);
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
 
 
     }

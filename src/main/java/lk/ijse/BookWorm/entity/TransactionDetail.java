@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class TransactionDetail {
 
 
+
     @EmbeddedId
     private TransactionDetailPK transactionDetailPK;
 
@@ -35,7 +36,6 @@ public class TransactionDetail {
             updatable = false
     )
     private Transaction transaction;
-
 
 
 }
