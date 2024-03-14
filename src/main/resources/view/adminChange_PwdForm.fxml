@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -34,5 +35,20 @@
             <Image url="@../assests/icon/security-user.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnLeftBack" buttonType="RAISED" contentDisplay="TOP" layoutX="44.0" layoutY="134.0" onAction="#btnBackOnAction" prefHeight="92.0" prefWidth="76.0">
+         <graphic>
+            <ImageView fitHeight="81.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/arrow-circle-left.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
