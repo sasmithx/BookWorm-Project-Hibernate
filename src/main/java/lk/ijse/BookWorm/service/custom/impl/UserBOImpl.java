@@ -74,6 +74,23 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
+    public UserDTO searchUsers(String id) {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+
+        try{
+            userDAO.setSession(session);
+            User user = userDAO.getUserById(id);
+            UserDTO userDTO = new UserDTO(user.getId(), user.getName(), user.getPassword(), user.getMobile(), user.getEmail(), user.getAddress());
+            session.close();
+            return userDTO;
+        }catch (Exception e){
+            session.close();
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public ArrayList<UserDTO> getAllUsers() throws SQLException {
         Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
         userDAO.setSession(session);

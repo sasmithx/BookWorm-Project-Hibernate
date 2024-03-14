@@ -30,11 +30,11 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
 
 
             TransactionDetail transactionDetail = new TransactionDetail();
-            transactionDetail.setTransaction(transactionId);
+          /*  transactionDetail.setTransaction(transactionId);
             transactionDetail.(cartTm.getBookID());
             transactionDetail.(cartTm.getTitle());
             transactionDetail.(cartTm.getQty());
-            transactionDetail.(cartTm.getAmount());
+            transactionDetail.(cartTm.getAmount());*/
 
             session.save(transactionDetail);
 
