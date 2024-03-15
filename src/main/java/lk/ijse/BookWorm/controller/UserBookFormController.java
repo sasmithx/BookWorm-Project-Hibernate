@@ -109,6 +109,13 @@ public class UserBookFormController implements Initializable {
       cmbBookId.setItems(bookData);
    }
 
+   public boolean isContain(String bookId,int qty){
+      for(CartTm cartTm : obList){
+        if(cartTm.getBookID().equals(bookId) && (cartTm.getQty()>=qty)) return true;
+      }
+      return false;
+   }
+
    @FXML
    void btnAddToCartOnAction(ActionEvent event) {
       String code = cmbBookId.getValue();
@@ -120,7 +127,7 @@ public class UserBookFormController implements Initializable {
       // Setting style using CSS
       btnremove.setStyle("-fx-background-color: #f68fad; -fx-text-fill: white;");
 
-      if(qty>Integer.parseInt(txtQty.getText())){
+      if(isContain(code,qty)){
          new Alert(Alert.AlertType.CONFIRMATION,"out of stock or not enough stock").show();
 
       }else {
@@ -129,7 +136,8 @@ public class UserBookFormController implements Initializable {
             if (code.equals(colBookId.getCellData(i))) {
 
 
-               obList.get(i).setQty(qty);
+               int qty1 = obList.get(i).getQty();
+               obList.get(i).setQty(qty1+1);
 
 
                tblOrderCart.refresh();
@@ -142,7 +150,7 @@ public class UserBookFormController implements Initializable {
          obList.add(new CartTm(
                  code,
                  description,
-                 qty,
+                 1,
                  btnremove
          ));
          tblOrderCart.setItems(obList);

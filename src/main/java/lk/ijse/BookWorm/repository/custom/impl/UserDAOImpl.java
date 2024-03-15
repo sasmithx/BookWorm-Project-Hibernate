@@ -111,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserByUserName (String userName) {
-        String sql = "SELECT u FROM User AS u WHERE u.id=:username";
+        String sql = "SELECT u FROM User AS u WHERE u.name=:username";
 
         Query<User> query = session.createQuery(sql, User.class);
         query.setParameter("username",userName);
