@@ -118,13 +118,17 @@ public class UserDAOImpl implements UserDAO {
         return query.uniqueResult();
     }
 
-    /*@Override
-    public boolean verifyCredentials (String username, String password) throws SQLException, ClassNotFoundException {
+    @Override
+    public String verifyCredentials (String id) throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT password FROM User WHERE username = ?";
-        Query query = session.createQuery(sql);
-        List list = query.list();
-        session.close();
-        return false;
-    }*/
+        System.out.println("dao " +id);
+        String hql = "FROM User WHERE id = :userId";
+        Query query = session.createQuery(hql);
+        query.setParameter("userId", id);
+        User user = (User) query.uniqueResult();
+        String password = user.getPassword();
+        return password;
+//        session.close();
+
+    }
 }

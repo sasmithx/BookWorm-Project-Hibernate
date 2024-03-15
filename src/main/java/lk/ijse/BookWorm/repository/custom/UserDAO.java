@@ -17,5 +17,5 @@ public interface UserDAO extends CrudDAO<User,String> {
 
     User getUserByUserName (String userName);
 
-//    boolean verifyCredentials(String username,String password) throws SQLException, ClassNotFoundException;
+    String verifyCredentials(String username) throws SQLException, ClassNotFoundException;
 }

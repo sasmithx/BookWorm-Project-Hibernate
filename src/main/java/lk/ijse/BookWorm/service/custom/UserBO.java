@@ -1,6 +1,7 @@
 package lk.ijse.BookWorm.service.custom;
 
 import lk.ijse.BookWorm.dto.UserDTO;
+import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.service.SuperBO;
 
 import java.sql.SQLException;
@@ -12,6 +13,8 @@ public interface UserBO extends SuperBO {
     boolean deleteUsers(UserDTO userDTO);
     UserDTO searchUsers(String id);
     ArrayList<UserDTO> getAllUsers() throws SQLException;
-    /*boolean verifyCredentials(String username,String password) throws SQLException, ClassNotFoundException;*/
+    String verifyCredentials(String id) throws SQLException, ClassNotFoundException;
+
+    ArrayList<String> loadUserIds()  throws SQLException;
 
 }

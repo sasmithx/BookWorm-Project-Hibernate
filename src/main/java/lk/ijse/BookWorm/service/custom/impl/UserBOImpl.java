@@ -116,8 +116,21 @@ public class UserBOImpl implements UserBO {
         return userDTOS;
     }
 
-   /* @Override
-    public boolean verifyCredentials (String username, String password) throws SQLException, ClassNotFoundException {
-        return userDAO.verifyCredentials(username, password);
-    }*/
+    @Override
+    public String verifyCredentials (String id) throws SQLException, ClassNotFoundException {
+        System.out.println("bo " +id);
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        userDAO.setSession(session);
+        return userDAO.verifyCredentials(id);
+    }
+
+    @Override
+    public ArrayList<String> loadUserIds () throws SQLException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        userDAO.setSession(session);
+
+        ArrayList<String> list = userDAO.loadIds();
+        session.close();
+        return list;
+    }
 }
