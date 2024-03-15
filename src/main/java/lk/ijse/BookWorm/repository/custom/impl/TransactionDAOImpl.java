@@ -2,12 +2,14 @@ package lk.ijse.BookWorm.repository.custom.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lk.ijse.BookWorm.config.SessionFactoryConfig;
 import lk.ijse.BookWorm.entity.Transaction;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.custom.TransactionDAO;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,8 @@ public class TransactionDAOImpl implements TransactionDAO {
 
     @Override
     public boolean save(Transaction entity) throws SQLException, ClassNotFoundException {
-        session.save(entity);
-        return false;
+        int save = (int) session.save(entity);
+        return save>0;
     }
 
     @Override
@@ -46,20 +48,30 @@ public class TransactionDAOImpl implements TransactionDAO {
         this.session = session;
     }
 
-    @Override
-    public String generateNextOrderId() throws SQLException, ClassNotFoundException {
-        String hql = "SELECT t.id FROM Transaction t ORDER BY t.id DESC";
-        Query<String> query = session.createQuery(hql,String.class);
-        query.setMaxResults(1);
-
-        List<String> result = query.list();
-
-        if(!result.isEmpty()){
-            String currentOrderId = result.get(0);
-            return splitOrderId(currentOrderId);
-        }
-        return splitOrderId(null);
-    }
+//    @Override
+//    public String generateNextOrderId() throws SQLException, ClassNotFoundException {
+////        String hql = "SELECT t.id FROM Transaction t ORDER BY t.id DESC";
+//        Session session1 = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+//
+//        String hql = "FROM Transaction";
+//        Query<Transaction> query = session1.createQuery(hql);
+////        query.setMaxResults(1);
+//        List<Transaction> transactions = query.list();
+//        List<String> list = new ArrayList<>();
+//
+//        for(Transaction transaction : transactions){
+//           list.add(String.valueOf(transaction.getId()));
+//        }
+//        session1.close();
+//
+//        if(!transactions.isEmpty()){
+//          String currentOrderId = list.get(list.size()-1);
+//            System.out.println("current"+currentOrderId);
+////            String currentOrderId = result.get(0);
+////            return splitOrderId(currentOrderId);
+//        }
+////        return splitOrderId(null);
+//    }
 
     private String splitOrderId(String currentOrderId) {    //O008
         if (currentOrderId != null) {

@@ -9,9 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.BookDTO;
 import lk.ijse.BookWorm.dto.TransactionDTO;
+import lk.ijse.BookWorm.dto.UserDTO;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.TransactionBO;
@@ -89,14 +91,20 @@ public class UserBookFormController implements Initializable {
       }
    }
 
-   public void loadCustomerId() throws SQLException, ClassNotFoundException {
+   public void loadUserId() throws SQLException, ClassNotFoundException {
 
-      ObservableList<String> userData = transactionBO.loadUserId();
-      cmbUserId.setItems(userData);
+      ArrayList<UserDTO> allUsers = transactionBO.getAllUsers();
+      for(UserDTO userDTO : allUsers){
+         cmbUserId.getItems().add(userDTO.getId());
+      }
    }
 
    public void loadBookId() throws SQLException, ClassNotFoundException {
 
+    /*  ArrayList<BookDTO> allUsers = transactionBO.getAllBooks();
+      for(BookDTO bookDTO1 : allBooks){
+         cmbBookId.getItems().add(.getId());
+      }*/
       ObservableList<String> bookData = transactionBO.loadBookId();
       cmbBookId.setItems(bookData);
    }
@@ -168,12 +176,12 @@ public class UserBookFormController implements Initializable {
 
    @FXML
    void btnBorrowOnAction(ActionEvent event) {
-      String transactionId = txtTransactionId.getText();
+//      String transactionId = txtTransactionId.getText();
 //      String bookId = cmbBookId.getValue();
       LocalDate orderDate = LocalDate.parse(txtOrderDate.getText());
       String userName = txtUserName.getText();
-      int qty = Integer.parseInt(txtQty.getText());
-      int total = Integer.parseInt(txtTotal.getText());
+      int qty = tblOrderCart.getItems().size();
+
 
 
 
@@ -185,11 +193,10 @@ public class UserBookFormController implements Initializable {
       }
 
       var transactionDTO = new TransactionDTO(
-              transactionId,
+              -1,
               orderDate,
               userName,
               qty,
-              total,
               tmList
       );
 
@@ -197,7 +204,7 @@ public class UserBookFormController implements Initializable {
       try {
          isSuccess = transactionBO.placeOrder(transactionDTO);
          System.out.println(isSuccess+"success");
-         txtTransactionId.setText(transactionBO.generateNextOrderId());
+//         txtTransactionId.setText(transactionBO.generateNextOrderId());
       } catch (SQLException | ClassNotFoundException e) {
          throw new RuntimeException(e);
       }
@@ -213,20 +220,13 @@ public class UserBookFormController implements Initializable {
    @FXML
    void cmbBookOnAcion(ActionEvent event) {
       try {
-         bookDTO = transactionBO.(cmbItemCode.getValue());
+         bookDTO = transactionBO.searchBook(cmbBookId.getValue());
       } catch (SQLException | ClassNotFoundException e) {
          new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
       }
-      txtDescription.setText(itemDto.getName());
-      txtQtyOnHand.setText(String.valueOf(itemDto.getQty()));
-      txtUnitPrice.setText(String.valueOf(itemDto.getUnitPrice()));
+      txtTitle.setText(bookDTO.getBookName());
+      txtQty.setText(String.valueOf(bookDTO.getQty()));
 
-      if (itemDto.getQty() > 0) {
-         txtQtyOnHand.setText(String.valueOf(itemDto.getQty()));
-      } else {
-         txtQtyOnHand.setText("Out Of Stock");
-         new Alert(Alert.AlertType.CONFIRMATION,"Out Of Stock").show();
-      }
    }
 
    @FXML
@@ -236,6 +236,36 @@ public class UserBookFormController implements Initializable {
 
    @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
+      /* try{
+          loadUserId();
+          loadBookId();
+          setCellValueFactory();
+       }catch (Exception e){
+          e.printStackTrace();
+       }*/
+
+      try {
+         loadUserId();
+         loadBookId();
+         setCellValueFactory();
+         /*txtTransactionId.setText(transactionBO.generateNextOrderId());*/
+
+         txtOrderDate.setText(String.valueOf(LocalDate.now()));
+      } catch (SQLException | ClassNotFoundException e) {
+         throw new RuntimeException(e);
+      }
+   }
+
+   private void setCellValueFactory(){
+      /*colBookId.setCellValueFactory(new PropertyValueFactory<>("code"));
+      colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+      colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+      colAction.setCellValueFactory(new PropertyValueFactory<>("removebtn"));*/
+
+      tblOrderCart.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("bookID"));
+      tblOrderCart.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("title"));
+      tblOrderCart.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("qty"));
+      tblOrderCart.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("removebtn"));
 
    }
 }

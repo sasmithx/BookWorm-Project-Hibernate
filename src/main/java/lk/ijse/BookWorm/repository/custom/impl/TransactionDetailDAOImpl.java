@@ -13,8 +13,8 @@ import java.util.List;
 public class TransactionDetailDAOImpl implements TransactionDetailDAO {
     private Session session;
     @Override
-    public boolean saveOrderDetail(String transactionId, List<CartTm> tmList) throws SQLException, ClassNotFoundException {
-        for (CartTm cartTm : tmList) {
+    public boolean saveOrderDetail(lk.ijse.BookWorm.entity.Transaction transactionId, List<TransactionDetail> tmList) throws SQLException, ClassNotFoundException {
+        for (TransactionDetail cartTm : tmList) {
             if (!saveOrderDetails(transactionId, cartTm)) {
                 return false;
             }
@@ -23,13 +23,10 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(String transactionId, CartTm cartTm) throws SQLException, ClassNotFoundException {
-        Transaction transaction = session.beginTransaction();
+    public boolean saveOrderDetails(lk.ijse.BookWorm.entity.Transaction transactionId, TransactionDetail cartTm) throws SQLException, ClassNotFoundException {
+//        Transaction transaction = session.beginTransaction();
 
         try {
-            transaction = session.beginTransaction();
-
-
             TransactionDetail transactionDetail = new TransactionDetail();
             /*transactionDetail.setTransaction(transactionId);
             transactionDetail.(cartTm.getBookID());
@@ -37,7 +34,7 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
             transactionDetail.(cartTm.getQty());
             transactionDetail.(cartTm.getAmount());*/
 
-            transactionDetail.setBook(
+            /*transactionDetail.setBook(
                     new Book(cartTm.getBookID(),
                             cartTm.getTitle(),
                             cartTm.getQty()
@@ -49,23 +46,26 @@ public class TransactionDetailDAOImpl implements TransactionDetailDAO {
                              cartTm.getBookID(),
                              cartTm.getTitle(),
                              cartTm.getQty()
-                     )
-            );
+                     )*/
+//            );
+            cartTm.setTransaction(transactionId);
 
-            session.save(transactionDetail);
+            session.save(cartTm);
 
 
 
-            transaction.commit();
+
             return true;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+
             e.printStackTrace();
             return false;
         }
 
 
+    }
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

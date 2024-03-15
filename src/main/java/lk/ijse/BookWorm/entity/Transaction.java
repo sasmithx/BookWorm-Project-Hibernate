@@ -1,5 +1,6 @@
 package lk.ijse.BookWorm.entity;
 
+import com.sun.javafx.geom.transform.Identity;
 import com.sun.xml.bind.v2.model.core.ID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +21,9 @@ public class Transaction {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
-    private String id;
+    private int id;
     @Column(name = "order_date")
     private LocalDate orderDate;
 
@@ -30,8 +32,7 @@ public class Transaction {
 
     @Column(name = "qty")
     private int qty;
-    @Column(name = "total")
-    private int total;
+
 
     @Column(name = "due_date")
     private String dueDate;
@@ -54,19 +55,19 @@ public class Transaction {
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
 
-    public Transaction(String id, LocalDate orderDate, String userName, int qty,  int total, String dueDate, String transactionType) {
+    public Transaction(int id, LocalDate orderDate, String userName, int qty, String dueDate, String transactionType,User user) {
         this.id=id;
         this.orderDate=orderDate;
         this.userName=userName;
         this.qty=qty;
-        this.total=total;
+
         this.dueDate=dueDate;
         this.transactionType=transactionType;
+        this.user = user;
 
     }
 
     public Transaction(String bookID, String title, int qty) {
-        id=bookID;
-        this.qty=qty;
+
     }
 }

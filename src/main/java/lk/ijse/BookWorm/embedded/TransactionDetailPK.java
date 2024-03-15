@@ -14,8 +14,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Embeddable
 public class TransactionDetailPK implements Serializable {
+    @Column(name = "transaction_id")
+    private int transactionID;
     @Column(name = "book_id")
     private String bookId;
-    @Column(name = "transaction_id")
-    private String transactionID;
+
 }

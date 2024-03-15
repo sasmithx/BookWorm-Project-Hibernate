@@ -15,22 +15,20 @@ import java.util.List;
 /*@AllArgsConstructor*/
 @NoArgsConstructor
 public class TransactionDTO {
-    private String id;
+    private int id;
     private LocalDate orderDate;
     private String userName;
     private int qty;
-    private int total;
     private String dueDate;
     private String transactionType;
     private User user;
     private List<CartTm> tmList = new ArrayList<>();
 
-    public TransactionDTO(String transactionId, LocalDate orderDate, String userName, int qty, int total, List<CartTm> tmList) {
+    public TransactionDTO(int transactionId, LocalDate orderDate, String userName, int qty, List<CartTm> tmList) {
         id=transactionId;
         this.orderDate=orderDate;
         this.userName=userName;
         this.qty=qty;
-        this.total=total;
         this.tmList=tmList;
     }
 
@@ -42,7 +40,6 @@ public class TransactionDTO {
         transaction.setOrderDate(orderDate);
         transaction.setUserName(userName);
         transaction.setQty(qty);
-        transaction.setTotal(total);
         transaction.setDueDate(dueDate);
         transaction.setTransactionType(transactionType);
         transaction.setUser(user);

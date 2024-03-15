@@ -18,4 +18,6 @@ public interface BookDAO extends CrudDAO<Book,String> {
     String generateNextId();
 
     int bookCount();
+
+    Book get(String bookID);
 }

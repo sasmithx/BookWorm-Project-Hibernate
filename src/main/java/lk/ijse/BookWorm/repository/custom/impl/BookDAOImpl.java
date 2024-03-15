@@ -71,7 +71,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public boolean updateBook(CartTm cartTm) throws SQLException, ClassNotFoundException {
         try {
-            session.beginTransaction();
+//            session.beginTransaction();
 
             // Use HQL to update book quantity
             String hql = "UPDATE Book b SET b.qty = b.qty - :qty WHERE b.id = :book_id";
@@ -85,11 +85,10 @@ public class BookDAOImpl implements BookDAO {
 
             // Commit the transaction if the update is successful
             if (updatedRows > 0) {
-                session.getTransaction().commit();
                 return true;
             } else {
                 // Rollback if no rows were updated
-                session.getTransaction().rollback();
+
                 return false;
             }
         } catch (Exception e) {
@@ -137,5 +136,10 @@ public class BookDAOImpl implements BookDAO {
         Query query = session.createQuery(sql);
         Long count = (Long) query.getSingleResult();
         return Math.toIntExact(count);
+    }
+
+    @Override
+    public Book get(String bookID) {
+        return session.get(Book.class,bookID);
     }
 }

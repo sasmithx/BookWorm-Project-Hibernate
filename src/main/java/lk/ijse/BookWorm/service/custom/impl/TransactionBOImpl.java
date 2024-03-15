@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.config.SessionFactoryConfig;
 import lk.ijse.BookWorm.dto.BookDTO;
 import lk.ijse.BookWorm.dto.TransactionDTO;
+import lk.ijse.BookWorm.dto.UserDTO;
+import lk.ijse.BookWorm.embedded.TransactionDetailPK;
 import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.Transaction;
 import lk.ijse.BookWorm.entity.TransactionDetail;
@@ -14,10 +16,13 @@ import lk.ijse.BookWorm.repository.custom.TransactionDAO;
 import lk.ijse.BookWorm.repository.custom.TransactionDetailDAO;
 import lk.ijse.BookWorm.repository.custom.UserDAO;
 import lk.ijse.BookWorm.service.custom.TransactionBO;
+import lk.ijse.BookWorm.tm.CartTm;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionBOImpl implements TransactionBO {
@@ -35,7 +40,7 @@ public class TransactionBOImpl implements TransactionBO {
     }
 
     @Override
-    public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
+    public List<String> loadUserId() throws SQLException, ClassNotFoundException {
         return userDAO.loadUserId();
     }
 
@@ -67,60 +72,127 @@ public class TransactionBOImpl implements TransactionBO {
 
     @Override
     public ObservableList<String> loadBookId() throws SQLException, ClassNotFoundException {
-        return bookDAO.loadBookId();
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        try{
+            bookDAO.setSession(session);
+            return bookDAO.loadBookId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            session.close();
+        }
     }
 
 
 
-    @Override
+    /*@Override
     public String generateNextOrderId() throws SQLException, ClassNotFoundException {
         return transactionDAO.generateNextOrderId();
-    }
+    }*/
 
     @Override
-    public boolean placeOrder(TransactionDTO transactionDTO) throws SQLException, ClassNotFoundException {
+    public boolean placeOrder (TransactionDTO transactionDTO) throws SQLException, ClassNotFoundException {
         boolean result = false;
 
         Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
         org.hibernate.Transaction transaction = session.beginTransaction();
+        LocalDate date = LocalDate.now().plusDays(14);
+
+        userDAO.setSession(session);
+       User user = userDAO.getUserByUserName(transactionDTO.getUserName());
 
         Transaction transaction1 = new Transaction(
                 transactionDTO.getId(),
                 transactionDTO.getOrderDate(),
                 transactionDTO.getUserName(),
                 transactionDTO.getQty(),
-                transactionDTO.getTotal(),
-                transactionDTO.getDueDate(),
-                transactionDTO.getTransactionType()
+                String.valueOf(date),
+                "borrowed",
+                user
         );
 
-        boolean isOrderSaved = transactionDAO.save(transaction1);
-        if (isOrderSaved) {
+        try {
+            transactionDAO.setSession(session);
+            boolean isOrderSaved = transactionDAO.save(transaction1);
+            bookDAO.setSession(session);
             boolean isUpdated = bookDAO.updateQty(transactionDTO.getTmList());
-            if (isUpdated) {
-                boolean isOrderDetailSaved = transactionDetailDAO.saveOrderDetail(transactionDTO.getId(), transactionDTO.getTmList());
-                System.out.println(isOrderDetailSaved);
-                if (isOrderDetailSaved) {
-                    transaction.commit();
-                    session.close();
 
-                    result = true;
-                } else {
-                    transaction.rollback();
-                    session.close();
-                }
-            } else {
-                transaction.rollback();
-               session.close();
+            List<TransactionDetail> transactionDetails = new ArrayList<>();
+            for (CartTm cartTm : transactionDTO.getTmList()) {
+                bookDAO.setSession(session);
+                Book book = bookDAO.get(cartTm.getBookID());
+                transactionDetails.add(new TransactionDetail(
+                        new TransactionDetailPK(transaction1.getId(),
+                                book.getId()),
+                        book,
+                        transaction1
+
+                ));
             }
-        }
-        else {
+            transactionDetailDAO.setSession(session);
+            boolean isOrderDetailSaved = transactionDetailDAO.saveOrderDetail(transaction1, transactionDetails);
 
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
             transaction.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
             session.close();
         }
+    }
 
-        return result;
+    @Override
+    public ArrayList<UserDTO> getAllUsers() throws SQLException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        userDAO.setSession(session);
+        ArrayList<User> users = null;
+        try {
+            users = userDAO.getAll();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<UserDTO> userDTOS = new ArrayList<>();
+        for(User user : users){
+            userDTOS.add(new UserDTO(
+                    user.getId(),
+                    user.getName(),
+                    user.getPassword(),
+                    user.getMobile(),
+                    user.getEmail(),
+                    user.getAddress()
+                    /*user.getDob()*/
+            ));
+        }
+        session.close();
+        return userDTOS;
+    }
+    @Override
+    public ArrayList<BookDTO> getAllBooks() throws SQLException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+        bookDAO.setSession(session);
+        ArrayList<Book> books = null;
 
+        try {
+            books = bookDAO.getAll();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<BookDTO> bookDTOS = new ArrayList<>();
+        for(Book book : books){
+            bookDTOS.add(new BookDTO(
+                    book.getId(),
+                    book.getBookName(),
+                    book.getAuthorName(),
+                    book.getGenre(),
+                    book.getQty()
+            ));
+        }
+        session.close();
+        return bookDTOS;
     }
 }

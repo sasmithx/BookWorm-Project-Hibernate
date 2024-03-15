@@ -59,17 +59,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
-        ObservableList<String> userData = FXCollections.observableArrayList();
+    public List<String> loadUserId() throws SQLException, ClassNotFoundException {
+//        ObservableList<String> userData = FXCollections.observableArrayList();
 
         String hql = "SELECT u.id FROM User u";
-        Query<String> query = session.createQuery(hql, String.class);
+        Query<String> query = session.createQuery(hql);
 
-        List<String> result = query.list();
+        return  query.list();
 
-        userData.addAll(result);
-
-        return userData;
     }
 
     @Override
@@ -110,5 +107,14 @@ public class UserDAOImpl implements UserDAO {
             return results.get(0);
         }
         return null;
+    }
+
+    @Override
+    public User getUserByUserName (String userName) {
+        String sql = "SELECT u FROM User AS u WHERE u.id=:username";
+
+        Query<User> query = session.createQuery(sql, User.class);
+        query.setParameter("username",userName);
+        return query.uniqueResult();
     }
 }

@@ -13,7 +13,7 @@ public class CartTm {
     private String bookID;
     private String title;
     private int qty;
-    private int amount;
+    /*private int amount;*/
     private Button removebtn;
 
     public CartTm(String code, String description, int qty, JFXButton btnremove) {
