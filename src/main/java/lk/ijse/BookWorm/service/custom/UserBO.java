@@ -12,5 +12,6 @@ public interface UserBO extends SuperBO {
     boolean deleteUsers(UserDTO userDTO);
     UserDTO searchUsers(String id);
     ArrayList<UserDTO> getAllUsers() throws SQLException;
+    /*boolean verifyCredentials(String username,String password) throws SQLException, ClassNotFoundException;*/
 
 }

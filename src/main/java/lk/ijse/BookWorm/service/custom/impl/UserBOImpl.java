@@ -115,4 +115,9 @@ public class UserBOImpl implements UserBO {
         session.close();
         return userDTOS;
     }
+
+   /* @Override
+    public boolean verifyCredentials (String username, String password) throws SQLException, ClassNotFoundException {
+        return userDAO.verifyCredentials(username, password);
+    }*/
 }

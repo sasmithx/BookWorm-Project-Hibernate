@@ -42,7 +42,7 @@
             </Label>
             <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Layered-Fruity-Fizz/src/main/resources/assests/icon/Ordericon.png" />
+                  <Image url="@../assests/icon/book-icon.png" />
                </image>
             </ImageView>
          </children>
@@ -59,9 +59,9 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="6.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="6.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Layered-Fruity-Fizz/src/main/resources/assests/icon/Customericon.png" />
+                  <Image url="@../assests/icon/user-icon.png" />
                </image>
             </ImageView>
          </children>

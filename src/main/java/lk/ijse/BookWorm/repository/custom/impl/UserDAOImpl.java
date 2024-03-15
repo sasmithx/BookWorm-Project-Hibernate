@@ -117,4 +117,14 @@ public class UserDAOImpl implements UserDAO {
         query.setParameter("username",userName);
         return query.uniqueResult();
     }
+
+    /*@Override
+    public boolean verifyCredentials (String username, String password) throws SQLException, ClassNotFoundException {
+
+        String sql = "SELECT password FROM User WHERE username = ?";
+        Query query = session.createQuery(sql);
+        List list = query.list();
+        session.close();
+        return false;
+    }*/
 }

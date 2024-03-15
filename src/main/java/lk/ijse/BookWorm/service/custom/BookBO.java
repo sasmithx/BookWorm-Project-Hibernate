@@ -11,4 +11,5 @@ public interface BookBO extends SuperBO {
     boolean updateBooks(BookDTO bookDTO);
     boolean deleteBooks(BookDTO bookDTO);
     ArrayList<BookDTO> getAllBooks() throws SQLException;
+
 }

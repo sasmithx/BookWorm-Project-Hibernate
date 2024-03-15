@@ -50,38 +50,13 @@ public class UserLoginFormController implements Initializable {
     void btnLoginOnAction(ActionEvent event) throws IOException {
         Navigation.switchNavigation("userGlobalForm.fxml",event);
 
-        /*id = (String) cmbUserId.getValue();
-
-        UserDTO userDTO = userBO.searchUsers((String) cmbUserId.getValue());
-        String userName = userDTO.getName();
-        String password = userDTO.getPassword();
-
-        if (userName.equals(txtUserName.getText()) && password.equals(txtPassword.getText())) {
-//            new ChangePwdController(userDTO.getUserId());
-            Stage stage = new Stage();
-            stage.resizableProperty().setValue(false);
+       /* if (userBO.verifyCredentials(txtUserName.getText(),txtPassword.getText())){
             try {
-                URL resource = UserGlobalFormController.class.getResource("/view/userGlobalForm.fxml");
-                Parent load = FXMLLoader.load(resource);
-                stage.setScene(new Scene(load));
+                Navigation.switchNavigation("dashboardForm.fxml",event);
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
-            stage.setTitle("BookWorm");
-
-            stage.centerOnScreen();
-
-
-            stage.show();
-            paneLogin.getScene().getWindow().hide();
-            UserGlobalFormController changePwdController = new UserGlobalFormController();
-            changePwdController.setUserId((String) cmbUserId.getValue());
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Login Incomplete!");
-            alert.show();
-        }
-*/
+        }*/
 
     }
 
