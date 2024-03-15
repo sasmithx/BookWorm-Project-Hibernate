@@ -17,6 +17,12 @@ public class UserDTO {
     private String mobile;
     private String email;
     private String address;
+
+    public UserDTO (String userId, String userName, String password) {
+        this.id=id;
+        this.name=userName;
+        this.password=password;
+    }
 //    private LocalDate dob;
 
     public User toEntity(){

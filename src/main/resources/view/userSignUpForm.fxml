@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserSignUpFormController">
+<AnchorPane fx:id="SignUpPane" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #161B22;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.BookWorm.controller.UserSignUpFormController">
    <children>
       <ImageView fitHeight="661.0" fitWidth="551.0" layoutX="36.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>

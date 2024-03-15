@@ -48,30 +48,6 @@ public class TransactionDAOImpl implements TransactionDAO {
         this.session = session;
     }
 
-//    @Override
-//    public String generateNextOrderId() throws SQLException, ClassNotFoundException {
-////        String hql = "SELECT t.id FROM Transaction t ORDER BY t.id DESC";
-//        Session session1 = SessionFactoryConfig.getSessionFactoryConfig().getSession();
-//
-//        String hql = "FROM Transaction";
-//        Query<Transaction> query = session1.createQuery(hql);
-////        query.setMaxResults(1);
-//        List<Transaction> transactions = query.list();
-//        List<String> list = new ArrayList<>();
-//
-//        for(Transaction transaction : transactions){
-//           list.add(String.valueOf(transaction.getId()));
-//        }
-//        session1.close();
-//
-//        if(!transactions.isEmpty()){
-//          String currentOrderId = list.get(list.size()-1);
-//            System.out.println("current"+currentOrderId);
-////            String currentOrderId = result.get(0);
-////            return splitOrderId(currentOrderId);
-//        }
-////        return splitOrderId(null);
-//    }
 
     private String splitOrderId(String currentOrderId) {    //O008
         if (currentOrderId != null) {

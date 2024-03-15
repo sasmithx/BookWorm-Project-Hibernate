@@ -19,6 +19,12 @@ public class UserGlobalFormController implements Initializable {
     @FXML
     private Pane pagingPane;
 
+    private String userId;
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @FXML
     void btnBooksOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane,"userBookForm.fxml");
