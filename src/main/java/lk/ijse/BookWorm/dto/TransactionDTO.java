@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
+/*@AllArgsConstructor*/
 @NoArgsConstructor
 public class TransactionDTO {
     private String id;
@@ -24,6 +24,17 @@ public class TransactionDTO {
     private String transactionType;
     private User user;
     private List<CartTm> tmList = new ArrayList<>();
+
+    public TransactionDTO(String transactionId, LocalDate orderDate, String userName, int qty, int total, List<CartTm> tmList) {
+        id=transactionId;
+        this.orderDate=orderDate;
+        this.userName=userName;
+        this.qty=qty;
+        this.total=total;
+        this.tmList=tmList;
+    }
+
+
 
     public Transaction toEntity(){
         Transaction transaction = new Transaction();

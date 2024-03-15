@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.service.custom.impl;
 
 import javafx.collections.ObservableList;
 import lk.ijse.BookWorm.config.SessionFactoryConfig;
+import lk.ijse.BookWorm.dto.BookDTO;
 import lk.ijse.BookWorm.dto.TransactionDTO;
 import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.Transaction;
@@ -14,8 +15,10 @@ import lk.ijse.BookWorm.repository.custom.TransactionDetailDAO;
 import lk.ijse.BookWorm.repository.custom.UserDAO;
 import lk.ijse.BookWorm.service.custom.TransactionBO;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class TransactionBOImpl implements TransactionBO {
 
@@ -34,6 +37,32 @@ public class TransactionBOImpl implements TransactionBO {
     @Override
     public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
         return userDAO.loadUserId();
+    }
+
+    @Override
+    public BookDTO searchBook(String value) throws SQLException, ClassNotFoundException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+//        org.hibernate.Transaction transaction = session.beginTransaction();
+        try {
+            Query<Book> query = session.createQuery("FROM Book WHERE id = :id", Book.class);
+            query.setParameter("id", value);
+            List<Book> results = query.list();
+
+            if (!results.isEmpty()) {
+                Book book = results.get(0);
+                return new BookDTO(
+                        book.getId(),
+                        book.getBookName(),
+                        book.getAuthorName(),
+                        book.getGenre(),
+                        book.getQty()
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     @Override

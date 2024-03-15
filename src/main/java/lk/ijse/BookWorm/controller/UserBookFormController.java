@@ -11,15 +11,17 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import lk.ijse.BookWorm.dto.BookDTO;
+import lk.ijse.BookWorm.dto.TransactionDTO;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.service.BOFactory;
 import lk.ijse.BookWorm.service.custom.TransactionBO;
 import lk.ijse.BookWorm.tm.CartTm;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class UserBookFormController implements Initializable {
 
@@ -166,17 +168,70 @@ public class UserBookFormController implements Initializable {
 
    @FXML
    void btnBorrowOnAction(ActionEvent event) {
+      String transactionId = txtTransactionId.getText();
+//      String bookId = cmbBookId.getValue();
+      LocalDate orderDate = LocalDate.parse(txtOrderDate.getText());
+      String userName = txtUserName.getText();
+      int qty = Integer.parseInt(txtQty.getText());
+      int total = Integer.parseInt(txtTotal.getText());
 
+
+
+
+      List<CartTm> tmList = new ArrayList<>();
+
+      for (CartTm cartTm : obList) {
+         tmList.add(cartTm);
+      }
+
+      var transactionDTO = new TransactionDTO(
+              transactionId,
+              orderDate,
+              userName,
+              qty,
+              total,
+              tmList
+      );
+
+      boolean isSuccess = false;
+      try {
+         isSuccess = transactionBO.placeOrder(transactionDTO);
+         System.out.println(isSuccess+"success");
+         txtTransactionId.setText(transactionBO.generateNextOrderId());
+      } catch (SQLException | ClassNotFoundException e) {
+         throw new RuntimeException(e);
+      }
+      if(isSuccess) {
+         ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+         ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Borrow completed!...", yes, no).showAndWait();
+
+      }
    }
 
    @FXML
    void cmbBookOnAcion(ActionEvent event) {
+      try {
+         bookDTO = transactionBO.(cmbItemCode.getValue());
+      } catch (SQLException | ClassNotFoundException e) {
+         new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+      }
+      txtDescription.setText(itemDto.getName());
+      txtQtyOnHand.setText(String.valueOf(itemDto.getQty()));
+      txtUnitPrice.setText(String.valueOf(itemDto.getUnitPrice()));
 
+      if (itemDto.getQty() > 0) {
+         txtQtyOnHand.setText(String.valueOf(itemDto.getQty()));
+      } else {
+         txtQtyOnHand.setText("Out Of Stock");
+         new Alert(Alert.AlertType.CONFIRMATION,"Out Of Stock").show();
+      }
    }
 
    @FXML
    void cmbUserOnAction(ActionEvent event) {
-
+      userIdClick();
    }
 
    @Override
