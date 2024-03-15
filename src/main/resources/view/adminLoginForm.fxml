@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -68,6 +67,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ComboBox fx:id="cmbAdminId" layoutX="805.0" layoutY="605.0" prefWidth="150.0" promptText="Admin ID" />
    </children>
 </AnchorPane>
