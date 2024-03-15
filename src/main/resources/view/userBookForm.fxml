@@ -19,44 +19,39 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTransactionId" layoutX="37.0" layoutY="138.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="37.0" layoutY="93.0" prefHeight="32.0" prefWidth="115.0" text="*Order ID" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
+      <TextField fx:id="txtTransactionId" layoutX="29.0" layoutY="29.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" visible="false" />
       <TextField fx:id="txtOrderDate" layoutX="490.0" layoutY="148.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
       <Label layoutX="490.0" layoutY="103.0" prefHeight="32.0" prefWidth="133.0" text="*Order Date" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="201.0" prefHeight="32.0" prefWidth="115.0" text="*User ID" textFill="WHITE">
+      <Label layoutX="32.0" layoutY="117.0" prefHeight="32.0" prefWidth="115.0" text="*User ID" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbUserId" layoutX="37.0" layoutY="233.0" onAction="#cmbUserOnAction" prefHeight="36.0" prefWidth="270.0" />
+      <JFXComboBox fx:id="cmbUserId" layoutX="32.0" layoutY="149.0" onAction="#cmbUserOnAction" prefHeight="36.0" prefWidth="270.0" />
       <TextField fx:id="txtUserName" layoutX="490.0" layoutY="243.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
       <Label layoutX="490.0" layoutY="198.0" prefHeight="32.0" prefWidth="133.0" text="*User Name" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="303.0" prefHeight="32.0" prefWidth="115.0" text="*Book ID" textFill="WHITE">
+      <Label layoutX="35.0" layoutY="214.0" prefHeight="32.0" prefWidth="115.0" text="*Book ID" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbBookId" layoutX="37.0" layoutY="335.0" onAction="#cmbBookOnAcion" prefHeight="32.0" prefWidth="211.0" />
-      <TextField fx:id="txtTitle" layoutX="281.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="281.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Title" textFill="WHITE">
+      <JFXComboBox fx:id="cmbBookId" layoutX="32.0" layoutY="246.0" onAction="#cmbBookOnAcion" prefHeight="32.0" prefWidth="211.0" />
+      <TextField fx:id="txtTitle" layoutX="42.0" layoutY="340.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="42.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Title" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQty" layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty" textFill="WHITE">
+      <TextField fx:id="txtQty" layoutX="490.0" layoutY="340.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="490.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

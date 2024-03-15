@@ -66,5 +66,10 @@
             </ImageView>
          </children>
       </Pane>
+      <ImageView fitHeight="474.0" fitWidth="513.0" layoutX="210.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/Logo.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

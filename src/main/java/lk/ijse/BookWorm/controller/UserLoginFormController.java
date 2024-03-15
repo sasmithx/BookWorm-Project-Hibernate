@@ -50,9 +50,9 @@ public class UserLoginFormController implements Initializable {
     void btnLoginOnAction(ActionEvent event) throws IOException {
         Navigation.switchNavigation("userGlobalForm.fxml",event);
 
-       /* if (userBO.verifyCredentials(txtUserName.getText(),txtPassword.getText())){
+      /*  if (userBO.verifyCredentials(txtUserName.getText(),txtPassword.getText())){
             try {
-                Navigation.switchNavigation("dashboardForm.fxml",event);
+                Navigation.switchNavigation("userDashboardForm.fxml",event);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
