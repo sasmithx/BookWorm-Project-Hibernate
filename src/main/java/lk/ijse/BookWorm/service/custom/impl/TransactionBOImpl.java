@@ -6,6 +6,7 @@ import lk.ijse.BookWorm.dto.TransactionDTO;
 import lk.ijse.BookWorm.entity.Book;
 import lk.ijse.BookWorm.entity.Transaction;
 import lk.ijse.BookWorm.entity.TransactionDetail;
+import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.DAOFactory;
 import lk.ijse.BookWorm.repository.custom.BookDAO;
 import lk.ijse.BookWorm.repository.custom.TransactionDAO;
@@ -25,6 +26,10 @@ public class TransactionBOImpl implements TransactionBO {
     TransactionDetailDAO transactionDetailDAO =DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TransactionDetailDAO);
 
 
+    @Override
+    public User searchUser(String newValue) throws SQLException, ClassNotFoundException {
+        return userDAO.search(newValue);
+    }
 
     @Override
     public ObservableList<String> loadUserId() throws SQLException, ClassNotFoundException {
@@ -35,6 +40,8 @@ public class TransactionBOImpl implements TransactionBO {
     public ObservableList<String> loadBookId() throws SQLException, ClassNotFoundException {
         return bookDAO.loadBookId();
     }
+
+
 
     @Override
     public String generateNextOrderId() throws SQLException, ClassNotFoundException {
@@ -86,13 +93,5 @@ public class TransactionBOImpl implements TransactionBO {
 
         return result;
 
-       /*transactionDAO.save(transaction);*/
-
-/*
-       bookDAO.update((Book) transactionDTO.getTmList());
-*/
-
-//       tra
-       /* return true;*/
     }
 }

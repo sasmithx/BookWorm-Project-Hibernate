@@ -19,13 +19,13 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField layoutX="37.0" layoutY="138.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtTransactionId" layoutX="37.0" layoutY="138.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
       <Label layoutX="37.0" layoutY="93.0" prefHeight="32.0" prefWidth="115.0" text="*Order ID" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField layoutX="490.0" layoutY="148.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtOrderDate" layoutX="490.0" layoutY="148.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
       <Label layoutX="490.0" layoutY="103.0" prefHeight="32.0" prefWidth="133.0" text="*Order Date" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -36,8 +36,8 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="37.0" layoutY="233.0" prefHeight="36.0" prefWidth="270.0" />
-      <TextField layoutX="490.0" layoutY="243.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
+      <JFXComboBox fx:id="cmbUserId" layoutX="37.0" layoutY="233.0" onAction="#cmbUserOnAction" prefHeight="36.0" prefWidth="270.0" />
+      <TextField fx:id="txtUserName" layoutX="490.0" layoutY="243.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 20;" />
       <Label layoutX="490.0" layoutY="198.0" prefHeight="32.0" prefWidth="133.0" text="*User Name" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -48,20 +48,20 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="37.0" layoutY="335.0" prefHeight="32.0" prefWidth="211.0" />
-      <TextField layoutX="281.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
+      <JFXComboBox fx:id="cmbBookId" layoutX="37.0" layoutY="335.0" onAction="#cmbBookOnAcion" prefHeight="32.0" prefWidth="211.0" />
+      <TextField fx:id="txtTitle" layoutX="281.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
       <Label layoutX="281.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Title" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtQty" layoutX="728.0" layoutY="340.0" prefHeight="32.0" prefWidth="211.0" style="-fx-background-radius: 20;" />
       <Label layoutX="728.0" layoutY="308.0" prefHeight="32.0" prefWidth="133.0" text="*Qty" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="728.0" layoutY="400.0" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Add to cart" textFill="WHITE">
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="728.0" layoutY="400.0" onAction="#btnAddToCartOnAction" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Add to cart" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -73,12 +73,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView layoutX="48.0" layoutY="472.0" prefHeight="198.0" prefWidth="821.0">
+      <TableView fx:id="tblOrderCart" layoutX="48.0" layoutY="472.0" prefHeight="198.0" prefWidth="821.0">
         <columns>
-          <TableColumn prefWidth="119.0" text="Book ID" />
-          <TableColumn prefWidth="220.0" text="Title" />
-            <TableColumn prefWidth="131.0" text="Qty" />
-            <TableColumn prefWidth="173.0" text="Action" />
+          <TableColumn fx:id="colBookId" prefWidth="119.0" text="Book ID" />
+          <TableColumn fx:id="colTitle" prefWidth="220.0" text="Title" />
+            <TableColumn fx:id="colQty" prefWidth="259.0" text="Qty" />
+            <TableColumn fx:id="colAction" prefWidth="222.0" text="Action" />
         </columns>
       </TableView>
       <Label layoutX="40.0" layoutY="733.0" text="Total Of Books:" textFill="WHITE">
@@ -87,6 +87,6 @@
          </font>
       </Label>
       <TextField fx:id="txtTotal" disable="true" layoutX="167.0" layoutY="731.0" />
-      <JFXButton layoutX="735.0" layoutY="717.0" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Borrow" textFill="WHITE" />
+      <JFXButton fx:id="btnBorrow" layoutX="735.0" layoutY="717.0" onAction="#btnBorrowOnAction" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #F6635C;" text="Borrow" textFill="WHITE" />
    </children>
 </Pane>

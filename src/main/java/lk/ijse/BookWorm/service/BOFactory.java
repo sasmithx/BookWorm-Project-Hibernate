@@ -11,7 +11,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        UserBO,BranchBO,BookBO,AdminDashBO
+        UserBO,BranchBO,BookBO,AdminDashBO,TransactionBO
     }
 
     public <T extends SuperBO>T getBO(BOFactory.BOTypes boTypes){
@@ -24,6 +24,8 @@ public class BOFactory {
                 return (T) new BookBOImpl();
             case AdminDashBO:
                 return (T) new AdminDashBOImpl();
+            case TransactionBO:
+                return (T) new TransactionBOImpl();
         }
         return null;
     }

@@ -11,4 +11,6 @@ public interface UserDAO extends CrudDAO<User,String> {
     User getUserById(String id);
     String generateNextId();
     int userCount();
+
+    User search(String newValue) throws SQLException, ClassNotFoundException;
 }

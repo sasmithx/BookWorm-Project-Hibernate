@@ -2,6 +2,7 @@ package lk.ijse.BookWorm.repository.custom.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lk.ijse.BookWorm.config.SessionFactoryConfig;
 import lk.ijse.BookWorm.entity.User;
 import lk.ijse.BookWorm.repository.custom.UserDAO;
 import org.hibernate.Session;
@@ -95,5 +96,19 @@ public class UserDAOImpl implements UserDAO {
         Query query = session.createQuery(sql);
         Long count = (Long) query.getSingleResult();
         return Math.toIntExact(count);
+    }
+
+    @Override
+    public User search(String newValue) throws SQLException, ClassNotFoundException {
+        Session session = SessionFactoryConfig.getSessionFactoryConfig().getSession();
+
+        Query<User> query = session.createQuery("FROM User WHERE id = :id", User.class);
+        query.setParameter("id",newValue);
+        List<User> results = query.list();
+
+        if(!results.isEmpty()){
+            return results.get(0);
+        }
+        return null;
     }
 }
